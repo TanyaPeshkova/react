@@ -24,8 +24,8 @@ class ProfilePage extends React.Component {
     }
 
     render() {
-        const id = this.state.profile.map((person,indx) => {
-         return <h3 className="mb-5" data-id={person.id}>Профиль обучающегося</h3>
+        const student_id = this.state.profile.map((person,indx) => {
+         return <h3 className="mb-5 mt-5" data-id={person.id} key={indx+1}>Профиль обучающегося</h3>
         })
 
             const rows = this.state.profile.map((person, indx) => {
@@ -82,8 +82,8 @@ class ProfilePage extends React.Component {
             })
         return <div className="student-profile person-profile">
         <div className="row">
-            <div className="col">
-                {id}
+            <div className="col mt-5">
+            {student_id}
             </div>
         </div><div className='row'>
             <div className='col-12'><table  className="table person-info-list">
