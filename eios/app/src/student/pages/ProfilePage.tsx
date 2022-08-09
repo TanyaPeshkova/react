@@ -1,12 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-
 
 import { StudentEios } from "../../models/StudentEios";
 import { ProfileEios } from "../../api/eios/ProfileEios";
+
 
 class ProfilePage extends React.Component {
     state = {

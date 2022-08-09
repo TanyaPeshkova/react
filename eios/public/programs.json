@@ -1,0 +1,664 @@
+
+{
+    "response": [
+      {
+        "RpdId": 94547,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863816?reportId=135",
+        "lineid": 1863816,
+        "id": "Б1.В.01.01",
+        "name": "Теория чисел",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 93215,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863768?reportId=135",
+        "lineid": 1863768,
+        "id": "Б1.В.01.02",
+        "name": "Теория функций комплексной переменной",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 92473,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863770?reportId=135",
+        "lineid": 1863770,
+        "id": "Б1.В.01.03",
+        "name": "Теория функций действительной переменной",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 81297,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863818?reportId=135",
+        "lineid": 1863818,
+        "id": "Б1.В.01.04",
+        "name": "Численные методы",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94505,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863776?reportId=135",
+        "lineid": 1863776,
+        "id": "Б1.В.01.05",
+        "name": "Решение олимпиадных задач по математике",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94384,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863819?reportId=135",
+        "lineid": 1863819,
+        "id": "Б1.В.01.06",
+        "name": "Избранные главы элементарной математики",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94403,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863820?reportId=135",
+        "lineid": 1863820,
+        "id": "Б1.В.01.07",
+        "name": "История математики",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94395,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863774?reportId=135",
+        "lineid": 1863774,
+        "id": "Б1.В.01.ДВ.01.01",
+        "name": "Интеллектуальное воспитание средствами математики",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94366,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863775?reportId=135",
+        "lineid": 1863775,
+        "id": "Б1.В.01.ДВ.01.02",
+        "name": "Внеурочная деятельность по математике",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94468,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863825?reportId=135",
+        "lineid": 1863825,
+        "id": "Б1.В.01.ДВ.02.01",
+        "name": "Преподавание в классах с углубленным изучением математики",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94453,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863824?reportId=135",
+        "lineid": 1863824,
+        "id": "Б1.В.01.ДВ.02.02",
+        "name": "Практикум по решению инженерно-математических задач",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94372,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863786?reportId=135",
+        "lineid": 1863786,
+        "id": "Б1.В.02.01",
+        "name": "Дискретная математика",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94196,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863785?reportId=135",
+        "lineid": 1863785,
+        "id": "Б1.В.02.02",
+        "name": "Естественнонаучные приложения информатики",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96652,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863814?reportId=135",
+        "lineid": 1863814,
+        "id": "Б1.В.02.03",
+        "name": "Решение предметных задач по информатике",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96618,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863835?reportId=135",
+        "lineid": 1863835,
+        "id": "Б1.В.02.04",
+        "name": "Основы микроэлектроники",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96604,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863828?reportId=135",
+        "lineid": 1863828,
+        "id": "Б1.В.02.05",
+        "name": "Образовательная робототехника",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96583,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863827?reportId=135",
+        "lineid": 1863827,
+        "id": "Б1.В.02.06",
+        "name": "Математические методы в информатике",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96579,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863829?reportId=135",
+        "lineid": 1863829,
+        "id": "Б1.В.02.07",
+        "name": "Компьютерное моделирование",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96650,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863831?reportId=135",
+        "lineid": 1863831,
+        "id": "Б1.В.02.08",
+        "name": "Решение олимпиадных задач по информатике",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96805,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863830?reportId=135",
+        "lineid": 1863830,
+        "id": "Б1.В.02.09",
+        "name": "Элементы теории формальных языков",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96608,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863788?reportId=135",
+        "lineid": 1863788,
+        "id": "Б1.В.02.ДВ.01.01",
+        "name": "Объектно-ориентированное программирование",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 95431,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863789?reportId=135",
+        "lineid": 1863789,
+        "id": "Б1.В.02.ДВ.01.02",
+        "name": "Visual Basic для приложений",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 95435,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863791?reportId=135",
+        "lineid": 1863791,
+        "id": "Б1.В.02.ДВ.02.01",
+        "name": "Web-программирование",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96670,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863792?reportId=135",
+        "lineid": 1863792,
+        "id": "Б1.В.02.ДВ.02.02",
+        "name": "Системное администрирование",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96622,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863833?reportId=135",
+        "lineid": 1863833,
+        "id": "Б1.В.02.ДВ.03.01",
+        "name": "Представление знаний в информационных системах",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96616,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863834?reportId=135",
+        "lineid": 1863834,
+        "id": "Б1.В.02.ДВ.03.02",
+        "name": "Основы искусственного интеллекта",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 90277,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863798?reportId=135",
+        "lineid": 1863798,
+        "id": "Б1.О.01.01",
+        "name": "История (история России, всеобщая история)",
+        "komps": "УК-5",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 89263,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863799?reportId=135",
+        "lineid": 1863799,
+        "id": "Б1.О.01.02",
+        "name": "Философия",
+        "komps": "УК-5",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94349,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863800?reportId=135",
+        "lineid": 1863800,
+        "id": "Б1.О.01.03",
+        "name": "Культурология",
+        "komps": "УК-5",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 89884,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863801?reportId=135",
+        "lineid": 1863801,
+        "id": "Б1.О.01.04",
+        "name": "Основы права",
+        "komps": "ОПК-1,ПК-1,УК-10",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 83939,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863806?reportId=135",
+        "lineid": 1863806,
+        "id": "Б1.О.01.05",
+        "name": "Основы финансовой грамотности",
+        "komps": "УК-2,ОПК-1,ПК-1,УК-9",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 87207,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863803?reportId=135",
+        "lineid": 1863803,
+        "id": "Б1.О.02.01",
+        "name": "Русский язык и культура речи",
+        "komps": "УК-4",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 91020,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863804?reportId=135",
+        "lineid": 1863804,
+        "id": "Б1.О.02.02",
+        "name": "Иностранный язык",
+        "komps": "УК-4",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 95481,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863805?reportId=135",
+        "lineid": 1863805,
+        "id": "Б1.О.02.03",
+        "name": "Информатика и информационно-коммуникационные технологии",
+        "komps": "УК-1,ОПК-2",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 92176,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863808?reportId=135",
+        "lineid": 1863808,
+        "id": "Б1.О.03.01",
+        "name": "Физическая культура и спорт",
+        "komps": "УК-7",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 90491,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863810?reportId=135",
+        "lineid": 1863810,
+        "id": "Б1.О.03.02",
+        "name": "Элективные дисциплины (модули) по физической культуре и спорту",
+        "komps": "УК-7",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 98012,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863809?reportId=135",
+        "lineid": 1863809,
+        "id": "Б1.О.03.03",
+        "name": "Возрастная анатомия, физиология и гигиена",
+        "komps": "ОПК-3,ОПК-8,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96526,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863811?reportId=135",
+        "lineid": 1863811,
+        "id": "Б1.О.03.04",
+        "name": "Безопасность жизнедеятельности",
+        "komps": "УК-8",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 85572,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863748?reportId=135",
+        "lineid": 1863748,
+        "id": "Б1.О.04.01",
+        "name": "Введение в профессию и основы планирования педагогической карьеры",
+        "komps": "УК-6,ОПК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 88171,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863749?reportId=135",
+        "lineid": 1863749,
+        "id": "Б1.О.04.02",
+        "name": "Психология",
+        "komps": "УК-3,ОПК-3,ОПК-5,ОПК-6,ОПК-7,ОПК-8,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 87526,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863750?reportId=135",
+        "lineid": 1863750,
+        "id": "Б1.О.04.03",
+        "name": "Педагогика",
+        "komps": "ОПК-1,ОПК-2,ОПК-3,ОПК-4,ОПК-5,ОПК-6,ОПК-7,ОПК-8,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 88251,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863751?reportId=135",
+        "lineid": 1863751,
+        "id": "Б1.О.04.04",
+        "name": "Технологии инклюзивного образования",
+        "komps": "ОПК-3,ОПК-5,ОПК-6,ОПК-8,ПК-3,ПК-4,ПК-5",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 97692,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863752?reportId=135",
+        "lineid": 1863752,
+        "id": "Б1.О.04.05",
+        "name": "Основы вожатской деятельности",
+        "komps": "ОПК-4,ПК-1,УК-3,УК-6,ОПК-1,ОПК-6,ОПК-7,ОПК-8",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 95488,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863756?reportId=135",
+        "lineid": 1863756,
+        "id": "Б1.О.05.01",
+        "name": "Информационно-коммуникационные технологии в образовании",
+        "komps": "ОПК-9",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 98314,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863757?reportId=135",
+        "lineid": 1863757,
+        "id": "Б1.О.05.02",
+        "name": "Методика обучения математике",
+        "komps": "УК-3,ОПК-1,ОПК-2,ОПК-3,ОПК-4,ОПК-5,ОПК-6,ОПК-7,ОПК-8,ПК-1,ПК-2,ПК-3,ПК-4,ПК-5,ОПК-9",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96588,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863758?reportId=135",
+        "lineid": 1863758,
+        "id": "Б1.О.05.03",
+        "name": "Методика обучения информатике",
+        "komps": "УК-3,ОПК-1,ОПК-2,ОПК-3,ОПК-4,ОПК-5,ОПК-6,ОПК-7,ОПК-8,ПК-1,ПК-2,ПК-3,ПК-4,ПК-5,ОПК-9",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96646,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863837?reportId=135",
+        "lineid": 1863837,
+        "id": "Б1.О.05.04",
+        "name": "Развивающие технологии в обучении информатике",
+        "komps": "ОПК-2,ПК-2,ПК-3,ПК-4,ПК-5",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94492,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863821?reportId=135",
+        "lineid": 1863821,
+        "id": "Б1.О.05.05",
+        "name": "Развивающие технологии в обучении математике",
+        "komps": "ОПК-2,ПК-2,ПК-3,ПК-4,ПК-5",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94514,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863823?reportId=135",
+        "lineid": 1863823,
+        "id": "Б1.О.05.06",
+        "name": "Современные модели и средства оценивания в обучении математике",
+        "komps": "ПК-2,ПК-3,ПК-4,ПК-5,ОПК-3,ОПК-8",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 84349,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863794?reportId=135",
+        "lineid": 1863794,
+        "id": "Б1.О.06.01",
+        "name": "Основы проектной и исследовательской деятельности",
+        "komps": "УК-1,УК-2,ОПК-2,ОПК-3,ОПК-4,ОПК-5,ОПК-6,ОПК-7,ОПК-8,ПК-1,ПК-2,ПК-3,ПК-4,ПК-5",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94567,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863763?reportId=135",
+        "lineid": 1863763,
+        "id": "Б1.О.07.01",
+        "name": "Элементарная математика",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94362,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863769?reportId=135",
+        "lineid": 1863769,
+        "id": "Б1.О.07.02",
+        "name": "Алгебра",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 81207,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863764?reportId=135",
+        "lineid": 1863764,
+        "id": "Б1.О.07.03",
+        "name": "Геометрия",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 93247,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863765?reportId=135",
+        "lineid": 1863765,
+        "id": "Б1.О.07.04",
+        "name": "Математический анализ",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 93207,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863766?reportId=135",
+        "lineid": 1863766,
+        "id": "Б1.О.07.05",
+        "name": "Дифференциальные уравнения",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94535,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863815?reportId=135",
+        "lineid": 1863815,
+        "id": "Б1.О.07.06",
+        "name": "Теория вероятностей и математическая статистика",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94417,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863817?reportId=135",
+        "lineid": 1863817,
+        "id": "Б1.О.07.07",
+        "name": "Математическая логика",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96636,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863778?reportId=135",
+        "lineid": 1863778,
+        "id": "Б1.О.08.01",
+        "name": "Программное обеспечение",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96629,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863779?reportId=135",
+        "lineid": 1863779,
+        "id": "Б1.О.08.02",
+        "name": "Программирование",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 95449,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863780?reportId=135",
+        "lineid": 1863780,
+        "id": "Б1.О.08.03",
+        "name": "Архитектура компьютера",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96595,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863781?reportId=135",
+        "lineid": 1863781,
+        "id": "Б1.О.08.04",
+        "name": "Модели данных в информационных системах",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96765,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863782?reportId=135",
+        "lineid": 1863782,
+        "id": "Б1.О.08.05",
+        "name": "Теоретические основы прикладной математики и информатики",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 95502,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863783?reportId=135",
+        "lineid": 1863783,
+        "id": "Б1.О.08.06",
+        "name": "Исследование операций",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 95470,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863826?reportId=135",
+        "lineid": 1863826,
+        "id": "Б1.О.08.07",
+        "name": "Инфокоммуникационные системы и сети",
+        "komps": "ОПК-2,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 95862,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863772?reportId=136",
+        "lineid": 1863772,
+        "id": "Б2.В.01.01(У)",
+        "name": "Учебная ознакомительная практика (по профилю Математика)",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 98682,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863836?reportId=136",
+        "lineid": 1863836,
+        "id": "Б2.В.01.02(У)",
+        "name": "Учебная ознакомительная практика (по профилю Информатика)",
+        "komps": "УК-1,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 99450,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863795?reportId=136",
+        "lineid": 1863795,
+        "id": "Б2.О.01.01(У)",
+        "name": "Научно-исследовательская работа (получение первичных навыков научно-исследовательской работы) (учебная практика)",
+        "komps": "УК-1,УК-2,ОПК-8,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94559,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863760?reportId=136",
+        "lineid": 1863760,
+        "id": "Б2.О.01.02(У)",
+        "name": "Учебная технологическая практика (по методике обучения математике и информатике)",
+        "komps": "ОПК-1,ОПК-2,ОПК-3,ОПК-4,ОПК-5,ОПК-6,ОПК-7,ОПК-8,ПК-1,ПК-2,ПК-3,ПК-4,ПК-5",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 95858,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863754?reportId=136",
+        "lineid": 1863754,
+        "id": "Б2.О.02.01(П)",
+        "name": "Производственная педагогическая практика (летняя)",
+        "komps": "УК-3,УК-6,ОПК-1,ОПК-4,ОПК-6,ОПК-7,ОПК-8,ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 98052,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863761?reportId=136",
+        "lineid": 1863761,
+        "id": "Б2.О.02.02(П)",
+        "name": "Производственная педагогическая практика",
+        "komps": "УК-1,УК-2,УК-3,УК-4,УК-5,УК-6,УК-7,УК-8,ОПК-1,ОПК-2,ОПК-3,ОПК-4,ОПК-5,ОПК-6,ОПК-7,ОПК-8,ПК-1,ПК-2,ПК-3,ПК-4,ПК-5,ОПК-9",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96173,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863796?reportId=136",
+        "lineid": 1863796,
+        "id": "Б2.О.02.03(П)",
+        "name": "Производственная преддипломная практика",
+        "komps": "ПК-1,УК-1,ОПК-8",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 96578,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863812?reportId=135",
+        "lineid": 1863812,
+        "id": "ФТД.01",
+        "name": "Компьютерная графика",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      },
+      {
+        "RpdId": 94449,
+        "RpdUrl": "http://rpd.tspu.edu.ru/RPDPrint/print/1863813?reportId=135",
+        "lineid": 1863813,
+        "id": "ФТД.02",
+        "name": "Практикум по комбинаторике",
+        "komps": "ПК-1",
+        "changes_sheet": ""
+      }
+    ],
+    "count": 73,
+    "have_changes": false
+  }

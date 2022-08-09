@@ -1,0 +1,420 @@
+
+{
+    "response": [
+      {
+        "DISCIPLINE_NAME": "Алгебра",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Введение в профессию и основы планирования педагогической карьеры",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Возрастная анатомия, физиология и гигиена",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Геометрия",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Иностранный язык",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Информатика и информационно-коммуникационные технологии",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "История (история России, всеобщая история)",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Программное обеспечение",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Русский язык и культура речи",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Физическая культура и спорт",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Элементарная математика",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 1
+      },
+      {
+        "DISCIPLINE_NAME": "Алгебра",
+        "mark_name": "хорошо",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Иностранный язык",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "История (история России, всеобщая история)",
+        "mark_name": "хорошо",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Математический анализ",
+        "mark_name": "хорошо",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Основы проектной и исследовательской деятельности",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Программирование",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Программное обеспечение",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Учебная ознакомительная практика (по профилю Информатика)",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Учебная ознакомительная практика (по профилю Математика)",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Элективные дисциплины (модули) по физической культуре и спорту",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Элементарная математика",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 2
+      },
+      {
+        "DISCIPLINE_NAME": "Алгебра",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Дискретная математика",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Естественнонаучные приложения информатики",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Математические методы в информатике",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Математический анализ",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Программирование",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Психология",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Философия",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Элективные дисциплины (модули) по физической культуре и спорту",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Элементарная математика",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 3
+      },
+      {
+        "DISCIPLINE_NAME": "Visual Basic для приложений",
+        "mark_name": "не выбрано",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Web-программирование",
+        "mark_name": "не выбрано",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Алгебра",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Архитектура компьютера",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Геометрия",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Дифференциальные уравнения",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Математический анализ",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Объектно-ориентированное программирование",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Психология",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Системное администрирование",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Учебная ознакомительная практика (по профилю Математика)",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Элективные дисциплины (модули) по физической культуре и спорту",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 4
+      },
+      {
+        "DISCIPLINE_NAME": "Геометрия",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Компьютерная графика",
+        "mark_name": "не выбрано",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Культурология",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Модели данных в информационных системах",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Основы искусственного интеллекта",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Основы финансовой грамотности",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Педагогика",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Представление знаний в информационных системах",
+        "mark_name": "не выбрано",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Теоретические основы прикладной математики и информатики",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Теория функций комплексной переменной",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Теория чисел",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Технологии инклюзивного образования",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Элективные дисциплины (модули) по физической культуре и спорту",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 5
+      },
+      {
+        "DISCIPLINE_NAME": "Внеурочная деятельность по математике",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Интеллектуальное воспитание средствами математики",
+        "mark_name": "не выбрано",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Научно-исследовательская работа (получение первичных навыков научно-исследовательской работы) (учебная практика)",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Педагогика",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Практикум по комбинаторике",
+        "mark_name": "не выбрано",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Решение предметных задач по информатике",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Теоретические основы прикладной математики и информатики",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Теория вероятностей и математическая статистика",
+        "mark_name": "отлично",
+        "IS_EXAMEN": 1,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Теория функций действительной переменной",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Учебная ознакомительная практика (по профилю Информатика)",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Численные методы",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 6
+      },
+      {
+        "DISCIPLINE_NAME": "Элективные дисциплины (модули) по физической культуре и спорту",
+        "mark_name": "зачтено",
+        "IS_EXAMEN": 0,
+        "NUMBER_OF_SEMESTER": 6
+      }
+    ],
+    "count": 69
+  }

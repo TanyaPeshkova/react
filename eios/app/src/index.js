@@ -16,4 +16,4 @@ import { ProfileEios } from './api/eios/ProfileEios';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<ProfilePage /> );
+root.render(<ProgramsPage /> );
