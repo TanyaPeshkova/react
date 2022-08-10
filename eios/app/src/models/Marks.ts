@@ -1,10 +1,10 @@
 import {BaseModel} from "./BaseModel";
 
 export interface MarksInterface {
-    DISCIPLINE_NAME: string
+    DISCIPLINE_NAME: string // переименовать в нижний регистр
     mark_name: string
     IS_EXAMEN: number
-    NUMBER_OF_SEMESTER: number
+    NUMBER_OF_SEMESTER: number // переименовать в нижний регистр
 }
 
 

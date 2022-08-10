@@ -27,15 +27,15 @@ import CompetencePage from "./pages/CompetencePage"
     // name: "Eui",
     // Component: EuiPage}
     
-    // export const routers = 
-    // { path: "/*",
-    // name: "ControlPoints",
-    // Component: ControlPointsPage}
- 
-    export const routers = 
+    export const routers =
     { path: "/*",
-    name: "Marks",
-    Component: MarksPage}
+    name: "ControlPoints",
+    Component: ControlPointsPage}
+ 
+    // export const routers =
+    // { path: "/*",
+    // name: "Marks",
+    // Component: MarksPage}
 
     // export const routers = 
     // { path: "/*",

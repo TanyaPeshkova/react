@@ -5,7 +5,7 @@ export interface ConpetenceInterface {
     id: string
 }
 
-
+// выносим модели в папку student
 export class Competence extends BaseModel implements ConpetenceInterface{
     name: string;
     id: string;

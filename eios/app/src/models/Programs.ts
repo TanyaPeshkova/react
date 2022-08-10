@@ -1,7 +1,7 @@
 import {BaseModel} from "./BaseModel";
 
 export interface ProgramsInterface {
-    RpdId: number
+    rpdId: number // переименовать: нижний регистр первая буква
     RpdUrl: string
     lineid: number
     id: string

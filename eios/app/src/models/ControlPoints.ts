@@ -1,7 +1,7 @@
 import {BaseModel} from "./BaseModel";
 
 export interface ControlPointsInterface {
-    NAMEDIS: string
+    NAMEDIS: string // переименовать в нижний регистр
     n_sem: number
     mark_name: string
 }

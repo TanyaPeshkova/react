@@ -1,8 +1,8 @@
 import {BaseModel} from "./BaseModel";
 
 export interface EorInterface {
-    КодПлана: number
-    УчебныйПлан: string
+    КодПлана: number // переименовать на латиницу
+    УчебныйПлан: string // переименовать на латиницу
     name: string
     link: string
     id: number
