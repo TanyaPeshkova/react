@@ -17,6 +17,7 @@ export class Eor extends BaseModel implements EorInterface{
     link: string;
     id: number;
     plan: string;
+    show?: boolean = true;
 
     build(props) {
         this.code = props.КодПлана;

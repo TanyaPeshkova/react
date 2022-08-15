@@ -1,0 +1,41 @@
+<table class="table table-bordered komps-table">
+    <thead style="display: block">
+        <th>Дисциплина</th>
+        {% for k in competence %}
+        <th class="komp komp-{% if k.id|get_abbr_beginning == 'ОК' %}ok{% elif k.id|get_abbr_beginning == 'ОПК' %}opk
+                            {% elif k.id|get_abbr_beginning == 'ПК' %}pk{% elif k.id|get_abbr_beginning == 'ПСК' %}psk
+                            {% elif k.id|get_abbr_beginning == 'ПКС' %}pks{% elif k.id|get_abbr_beginning == 'УК' %}uk{% endif %}"
+            data-toggle="tooltip" title=" {{ k.id }}: {{ k.name|make_title_for_competition }}">{{ k.id }}</th>
+        {% endfor %}
+    </thead>
+    <tbody>
+        {% for p in competence_course %}
+        <tr>
+            <td>{{ p.name }}</td>
+            {% for k in competence %}
+            <td class="komp komp-{% if k.id|get_abbr_beginning == 'ОК' %}ok{% elif k.id|get_abbr_beginning == 'ОПК' %}opk
+                            {% elif k.id|get_abbr_beginning == 'ПК' %}pk{% elif k.id|get_abbr_beginning == 'ПСК' %}psk
+                            {% elif k.id|get_abbr_beginning == 'ПКС' %}pks{% elif k.id|get_abbr_beginning == 'УК' %}uk{% endif %}"
+                data-toggle="tooltip">
+                {% check_komps p.komps k p.name %}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+----------------
+
+def check_komps(ks, k, name):
+    if k['id'] in ks.split(','):
+        html_string = '<span class="marked_komp" title="(' + name + ') ' + k['id'] + ': ' + make_title_for_competition(
+            k['name']) + '">&#x2713;</span>'
+        return format_html(html_string)
+    return ''
+
+def make_title_for_competition(competition):
+    if competition.startswith('Способен'):
+        return competition
+    else:
+        return 'Обладать ' + competition
