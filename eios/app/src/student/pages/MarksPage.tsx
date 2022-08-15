@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import { Marks } from "../../models/Marks";
+import { Marks } from "../../models/student/Marks";
 import { MarksEios } from '../../api/eios/MarksEios';
 
 class MarksPage extends React.Component {
@@ -29,7 +29,7 @@ class MarksPage extends React.Component {
         if (search !== '') {
             current = this.state.marks
             newList = current.filter(point => {
-                const lc = point.DISCIPLINE_NAME.toLowerCase();
+                const lc = point.discipline_name.toLowerCase();
                 const filter = search.toLowerCase();
                 return lc.includes(filter)
             })
@@ -41,41 +41,47 @@ class MarksPage extends React.Component {
             filtered:newList
         })
     }
-    All = () => {
+    all(){
         this.setState({
           filtered: [...this.state.marks]
         });
       }
     
-      Excellent = () => {
+    pointFilter(val: string) {
+        this.setState({
+          filtered: this.state.marks.filter(point => point.mark_name === val)
+        })
+      }
+    
+    excellentPoint() {
         this.setState({
           filtered: this.state.marks.filter(point => point.mark_name === 'отлично')
         });
       }
-      Good = () => {
+    goodPoint() {
         this.setState({
           filtered: this.state.marks.filter(point => point.mark_name === 'хорошо')
         });
       }
-      Well = () => {
+    wellPoint(){
         this.setState({
           filtered: this.state.marks.filter(point => point.mark_name === 'удовлетворительно')
         });
       }
-      Fail = () => {
+      failPoint(){
         this.setState({
           filtered: this.state.marks.filter(point => point.mark_name === 'неудовлетворительно')
         });
       }
 
-      Zachet = () => {
+      zachet(){
         this.setState({
-            filtered: this.state.marks.filter(point => point.IS_EXAMEN === 0)
+            filtered: this.state.marks.filter(point => point.is_examen === 0)
           });
       }
-      Exam = () => {
+      exam(){
         this.setState({
-            filtered: this.state.marks.filter(point => point.IS_EXAMEN === 1)
+            filtered: this.state.marks.filter(point => point.is_examen === 1)
           });
       }
 
@@ -83,20 +89,23 @@ class MarksPage extends React.Component {
 
     render() {
         const rows = this.state.filtered.map((mark, indx) => {
-            if (mark.IS_EXAMEN === 1) {
-                const exam = ` ✓`
-                const  zachet = ''
-            } else {
-                const exam = ''
-               const  zachet = ' ✓'
-            }
+          const exam = mark.is_examen === 1 ? ' ✓' : '';
+          const zachet = mark.is_examen !== 1 ? ' ✓' : '';
+
+            // if (mark.IS_EXAMEN === 1) {
+            //     const exam = ` ✓`
+            //     const  zachet = ''
+            // } else {
+            //     const exam = ''
+            //    const  zachet = ' ✓'
+            // }
 
           return <tr>
-          <td width="50%">{mark.DISCIPLINE_NAME}</td>
+          <td width="50%">{mark.discipline_name}</td>
           <td>{mark.mark_name}</td>
           <td align="center">{zachet}</td>
           <td align="center"> {exam} </td>
-          <td align="center">{mark.NUMBER_OF_SEMESTER}</td>
+          <td align="center">{mark.number_of_semester}</td>
       </tr>
       })
   return  <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
@@ -113,7 +122,7 @@ class MarksPage extends React.Component {
               Скачать данные в Excel-файл</a>
       </div>
 
-      <div className="marks overflow-auto">
+      <div >
   <table className="table">
       <thead>
       <tr>
@@ -135,12 +144,12 @@ class MarksPage extends React.Component {
   <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
     Все
   </button>
-  <ul className="dropdown-menu">
-    <li><button className="dropdown-item" onClick={e => this.All()}>Все</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Excellent()}>Отлично</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Good()}>Хорошо</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Well()}>Удовлетворительно</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Fail()}>Неудовлетворительно</button></li>
+  <ul className="dropdown-menu ">
+    <li><button className="dropdown-item" onClick={e => this.all()}>Все</button></li>
+    <li><button className="dropdown-item" onClick={e => this.excellentPoint()}>Отлично</button></li>
+    <li><button className="dropdown-item" onClick={e => this.goodPoint()}>Хорошо</button></li>
+    <li><button className="dropdown-item" onClick={e => this.wellPoint()}>Удовлетворительно</button></li>
+    <li><button className="dropdown-item" onClick={e => this.failPoint()}>Неудовлетворительно</button></li>
   </ul>
 </div>
 </th>
@@ -149,9 +158,9 @@ class MarksPage extends React.Component {
     Все
   </button>
   <ul className="dropdown-menu">
-    <li><button className="dropdown-item" onClick={e => this.All()}>Все</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Zachet()}>Зачет</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Exam()}>Экзамен</button></li>
+    <li><button className="dropdown-item" onClick={e => this.all()}>Все</button></li>
+    <li><button className="dropdown-item" onClick={e => this.zachet()}>Зачет</button></li>
+    <li><button className="dropdown-item" onClick={e => this.exam()}>Экзамен</button></li>
     
   </ul>
 </div></th>

@@ -1,4 +1,4 @@
-import {Programs} from "../../models/Programs";
+import {Programs} from "../../models/student/Programs";
 import {BaseApiEios} from "./BaseApiEios";
 
 export class ProgramsEios extends BaseApiEios {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import { Eui } from "../../models/Eui";
+import { Eui } from "../../models/student/Eui";
 import { EuiEios } from '../../api/eios/EuiEios';
 
 class EuiPage extends React.Component {
@@ -59,7 +59,7 @@ class EuiPage extends React.Component {
       
 <div className="students-eor">
 <div className="h3 mb-3 pt-3">
-Электронные образовательные ресурсы, указанные в рабочих программах
+Электронные учебные издания, указанные в рабочих программах
 </div>
 <table className="table">
 <thead>

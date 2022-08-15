@@ -1,4 +1,4 @@
-import {Eor} from "../../models/Eor";
+import {Eor} from "../../models/student/Eor";
 import {BaseApiEios} from "./BaseApiEios";
 
 export class EorEios extends BaseApiEios {

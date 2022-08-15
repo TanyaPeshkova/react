@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import { Competence } from "../../models/Competence";
+import { Competence } from "../../models/student/Competence";
 import { CompetenceEios } from '../../api/eios/CompetenceEios';
 
 class CompetencePage extends React.Component {
@@ -45,7 +45,7 @@ class CompetencePage extends React.Component {
     render() {
        
         const rows = this.state.filtered.map((comp, indx) => {
-            <th className="komp komp-uk"
+           return <th className="komp komp-uk"
             data-toggle="tooltip"
             title={comp.name}>{comp.id}</th>
       })

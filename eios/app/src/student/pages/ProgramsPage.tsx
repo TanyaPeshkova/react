@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 
 
-import { Programs } from "../../models/Programs";
+import { Programs } from "../../models/student/Programs";
 import { ProgramsEios } from "../../api/eios/ProgramsEios";
 
 class ProgramsPage extends React.Component {
@@ -52,7 +52,7 @@ class ProgramsPage extends React.Component {
                     {program.id}
                 </td>
                 <td>
-                <a href={program.RpdUrl} target="_blank">{program.name}</a>
+                <a href={program.rpdUrl} target="_blank">{program.name}</a>
                 </td>
                 </tr>
             })

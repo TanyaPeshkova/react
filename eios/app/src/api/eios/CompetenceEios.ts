@@ -1,4 +1,4 @@
-import {Competence} from "../../models/Competence";
+import {Competence} from "../../models/student/Competence";
 import {BaseApiEios} from "./BaseApiEios";
 
 export class CompetenceEios extends BaseApiEios {

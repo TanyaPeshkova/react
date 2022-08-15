@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import { ControlPoints } from "../../models/ControlPoints";
+import { ControlPoints } from "../../models/student/ControlPoints";
 import { ControlPointsEios } from '../../api/eios/ControlPointsEios';
 
 class ControlPointsPage extends React.Component {
@@ -29,7 +29,7 @@ class ControlPointsPage extends React.Component {
         if (search !== '') {
             current = this.state.controlPoints
             newList = current.filter(point => {
-                const lc = point.NAMEDIS.toLowerCase();
+                const lc = point.name_dis.toLowerCase();
                 const filter = search.toLowerCase();
                 return lc.includes(filter)
             })
@@ -41,28 +41,34 @@ class ControlPointsPage extends React.Component {
             filtered:newList
         })
     }
-    All = () => {
+    all(){
         this.setState({
           filtered: [...this.state.controlPoints]
         });
       }
+
+      pointFilter(val: string) {
+        this.setState({
+          filtered: this.state.controlPoints.filter(point => point.mark_name === val)
+        })
+      }
     
-      Excellent = () => {
+      excellentPoint() {
         this.setState({
           filtered: this.state.controlPoints.filter(point => point.mark_name === 'отлично')
         });
       }
-      Good = () => {
+      goodPoint() {
         this.setState({
           filtered: this.state.controlPoints.filter(point => point.mark_name === 'хорошо')
         });
       }
-      Well = () => {
+      wellPoint(){
         this.setState({
           filtered: this.state.controlPoints.filter(point => point.mark_name === 'удовлетворительно')
         });
       }
-      Fail = () => {
+      failPoint(){
         this.setState({
           filtered: this.state.controlPoints.filter(point => point.mark_name === 'неудовлетворительно')
         });
@@ -73,12 +79,10 @@ class ControlPointsPage extends React.Component {
     render() {
        
         const rows = this.state.filtered.map((point, indx) => {
-            if (point.mark_name === "") {
-                const mark = 'не выбрано';
-            } else {const mark = point.mark_name}
+          const mark = point.mark_name !== "" ? point.mark_name : 'не выбрано';
           return <tr key={indx}>
               <td >
-              {point.NAMEDIS}
+              {point.name_dis}
           </td>
           <td>
           {point.n_sem}
@@ -121,11 +125,11 @@ class ControlPointsPage extends React.Component {
     Все
   </button>
   <ul className="dropdown-menu">
-    <li><button className="dropdown-item" onClick={e => this.All()}>Все</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Excellent()}>Отлично</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Good()}>Хорошо</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Well()}>Удовлетворительно</button></li>
-    <li><button className="dropdown-item" onClick={e => this.Fail()}>Неудовлетворительно</button></li>
+    <li><button className="dropdown-item" onClick={e => this.all()}>Все</button></li>
+    <li><button className="dropdown-item" onClick={e => this.excellentPoint()}>Отлично</button></li>
+    <li><button className="dropdown-item" onClick={e => this.goodPoint()}>Хорошо</button></li>
+    <li><button className="dropdown-item" onClick={e => this.wellPoint()}>Удовлетворительно</button></li>
+    <li><button className="dropdown-item" onClick={e => this.failPoint()}>Неудовлетворительно</button></li>
   </ul>
 </div>
 </th>

@@ -1,8 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import { Eor } from "../../models/Eor";
+import { Eor } from "../../models/student/Eor";
 import { EorEios } from '../../api/eios/EorEios';
+// import {Search} from '../../search'
 
 class EorPage extends React.Component {
     state = {
@@ -22,15 +23,15 @@ class EorPage extends React.Component {
     }
 
     
-    search = search => {
+    search(query) {
         let current = [];
         let newList = [];
 
-        if (search !== '') {
+        if (query !== '') {
             current = this.state.eor
             newList = current.filter(resurs => {
                 const lc = resurs.name.toLowerCase();
-                const filter = search.toLowerCase();
+                const filter = query.toLowerCase();
                 return lc.includes(filter)
             })
         } else {

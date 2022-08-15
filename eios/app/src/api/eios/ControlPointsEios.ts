@@ -1,4 +1,4 @@
-import {ControlPoints} from "../../models/ControlPoints";
+import {ControlPoints} from "../../models/student/ControlPoints";
 import {BaseApiEios} from "./BaseApiEios";
 
 export class ControlPointsEios extends BaseApiEios {

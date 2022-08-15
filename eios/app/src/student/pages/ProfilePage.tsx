@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 
-import { StudentEios } from "../../models/StudentEios";
+import { StudentEios } from "../../models/student/StudentEios";
 import { ProfileEios } from "../../api/eios/ProfileEios";
 
 
