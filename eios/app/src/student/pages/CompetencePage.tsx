@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { Competence } from "../../models/student/Competence";
 import { CompetenceEios } from '../../api/eios/CompetenceEios';
@@ -21,7 +21,7 @@ class CompetencePage extends React.Component {
         this.setState({ filtered: competence })
     }
 
-    
+
     search = search => {
         let current = [];
         let newList = [];
@@ -38,53 +38,53 @@ class CompetencePage extends React.Component {
         }
 
         this.setState({
-            filtered:newList
+            filtered: newList
         })
     }
 
     render() {
-       
-        const rows = this.state.filtered.map((comp, indx) => {
-           return <th className="komp komp-uk"
-            data-toggle="tooltip"
-            title={comp.name}>{comp.id}</th>
-      })
-  return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
-                
-        
 
-  <div className="students-competence">
-      <div className="h3 mb-5">
-          Результаты освоения программы
-      </div>
-  
-      
-          <div className="h5 mb-3">
-              <button className="btn btn-sm btn-tspu show_all">Все</button>
-              
-                  
-                      <button className="btn btn-sm btn-tspu komp-switch" title="Общекультурные компетенции"
-                              data-x=".komp-uk">УК</button>
-                  
-              
-                  
-                      <button className="btn btn-sm btn-tspu komp-switch" title="Общекультурные компетенции"
-                              data-x=".komp-opk">ОПК</button>
-                  
-              
-                  
-                      <button className="btn btn-sm btn-tspu komp-switch" title="Общекультурные компетенции"
-                              data-x=".komp-pk">ПК</button>
-                  
-              
-          </div>
-          <table className="table table-bordered komps-table">
-              <thead><td>
-              <th>Дисциплина</th>
-              {rows}
-              </td>
-              </thead><tbody></tbody></table></div></div>
-}
+        const rows = this.state.filtered.map((comp, indx) => {
+            return <th className="komp komp-uk"
+                data-toggle="tooltip"
+                title={comp.name}>{comp.id}</th>
+        })
+        return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
+
+
+
+            <div className="students-competence">
+                <div className="h3 mb-5">
+                    Результаты освоения программы
+                </div>
+
+
+                <div className="h5 mb-3">
+                    <button className="btn btn-sm btn-tspu show_all">Все</button>
+
+
+                    <button className="btn btn-sm btn-tspu komp-switch" title="Общекультурные компетенции"
+                        data-x=".komp-uk">УК</button>
+
+
+
+                    <button className="btn btn-sm btn-tspu komp-switch" title="Общекультурные компетенции"
+                        data-x=".komp-opk">ОПК</button>
+
+
+
+                    <button className="btn btn-sm btn-tspu komp-switch" title="Общекультурные компетенции"
+                        data-x=".komp-pk">ПК</button>
+
+
+                </div>
+                <table className="table table-bordered komps-table">
+                    <thead><td>
+                        <th>Дисциплина</th>
+                        {rows}
+                    </td>
+                    </thead><tbody></tbody></table></div></div>
+    }
 
 }
 

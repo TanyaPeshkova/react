@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -20,10 +20,10 @@ class ProgramsPage extends React.Component {
         const programs = await new ProgramsEios().all();
 
         this.setState({ programs: programs })
-        this.setState({filtered: programs})
+        this.setState({ filtered: programs })
     }
 
-   
+
 
     search = search => {
         let current = [];
@@ -41,44 +41,44 @@ class ProgramsPage extends React.Component {
         }
 
         this.setState({
-            filtered:newList
+            filtered: newList
         })
     }
 
     render() {
-              const rows = this.state.filtered.map((program, indx) => {
-                return <tr key={indx}>
-                    <td >
+        const rows = this.state.filtered.map((program, indx) => {
+            return <tr key={indx}>
+                <td >
                     {program.id}
                 </td>
                 <td>
-                <a href={program.rpdUrl} target="_blank">{program.name}</a>
+                    <a href={program.rpdUrl} target="_blank">{program.name}</a>
                 </td>
-                </tr>
-            })
+            </tr>
+        })
         return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
-            
-<div className="students-docs">
-<div className="h3 mt-5 pt-5 mb-3">
-    Рабочие программы учебных дисциплин, практик
-</div>
 
-<table className="table ">
-    <thead>
-    <tr>
-        <th></th>
-        <th><input  onChange={e => this.search(e.target.value)}
-          type="text"
-          placeholder="Поиск..." ></input></th>
-        
-    </tr>
-    <tr>
-        <th>Код</th>
-        <th>Дисциплина/практика (с приложением ОММ/ФОС)</th>
-        
-    </tr>
-    </thead>
-    <tbody>{rows}</tbody></table></div></div>
+            <div className="students-docs">
+                <div className="h3 mt-5 pt-5 mb-3">
+                    Рабочие программы учебных дисциплин, практик
+                </div>
+
+                <table className="table ">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><input onChange={e => this.search(e.target.value)}
+                                type="text"
+                                placeholder="Поиск..." ></input></th>
+
+                        </tr>
+                        <tr>
+                            <th>Код</th>
+                            <th>Дисциплина/практика (с приложением ОММ/ФОС)</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>{rows}</tbody></table></div></div>
     }
 
 }

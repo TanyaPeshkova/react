@@ -17,10 +17,10 @@ import CompetencePage from "./pages/CompetencePage"
 //     name: "Programs",
 //     Component: ProgramsPage}
 
-export const routers = 
-    { path: "/*",
-    name: "Eor",
-    Component: EorPage}
+// export const routers = 
+//     { path: "/*",
+//     name: "Eor",
+//     Component: EorPage}
 
     // export const routers = 
     // { path: "/*",
@@ -32,10 +32,10 @@ export const routers =
     // name: "ControlPoints",
     // Component: ControlPointsPage}
  
-    // export const routers = 
-    // { path: "/*",
-    // name: "Marks",
-    // Component: MarksPage}
+    export const routers = 
+    { path: "/*",
+    name: "Marks",
+    Component: MarksPage}
 
     // export const routers = 
     // { path: "/*",
