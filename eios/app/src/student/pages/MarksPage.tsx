@@ -4,6 +4,7 @@ import { Marks } from "../../models/student/Marks";
 import { MarksEios } from '../../api/eios/MarksEios';
 
 class MarksPage extends React.Component {
+
   state = {
     marks: [new Marks()],
     filtered: []
@@ -53,7 +54,7 @@ class MarksPage extends React.Component {
     })
   }
 
-  handleClick(type: string) {
+  handlePointFilter(type: string) {
     switch (type) {
       case 'excellent':
         this.pointFilter('отлично')
@@ -67,6 +68,16 @@ class MarksPage extends React.Component {
       case 'fail':
         this.pointFilter('неудовлетворительно')
         break;
+      default:
+        this.setState({
+          filtered: [...this.state.marks]
+        });
+        break;
+    }
+  }
+
+  handleExamFilter(type: string) {
+    switch (type) {
       case 'exam':
         this.examFilter(1)
         break;
@@ -87,7 +98,7 @@ class MarksPage extends React.Component {
       const exam = mark.is_examen === 1 ? ' ✓' : '';
       const zachet = mark.is_examen !== 1 ? ' ✓' : '';
 
-      return <tr>
+      return <tr key={indx}>
         <td width="50%">{mark.discipline_name}</td>
         <td>{mark.mark_name}</td>
         <td align="center">{zachet}</td>
@@ -122,42 +133,57 @@ class MarksPage extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th><input onChange={e => this.search(e.target.value)}
-                  type="text"
-                  placeholder="Поиск..." ></input></th>
-
-                <th>    <div className="dropdown">
-                  <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                    Все
-                  </button>
-                  <ul className="dropdown-menu ">
-                    <li><button className="dropdown-item" onClick={e => { this.handleClick('') }}>Все</button></li>
-                    <li><button className="dropdown-item" onClick={e => { this.handleClick('excellent') }}>Отлично</button></li>
-                    <li><button className="dropdown-item" onClick={e => { this.handleClick('good') }}>Хорошо</button></li>
-                    <li><button className="dropdown-item" onClick={e => { this.handleClick('well') }}>Удовлетворительно</button></li>
-                    <li><button className="dropdown-item" onClick={e => { this.handleClick('fail') }}>Неудовлетворительно</button></li>
-                  </ul>
-                </div>
-                </th>
-                <th colSpan={2}> <div className="dropdown">
-                  <button className="btn btn-light dropdown-toggle  w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                    Все
-                  </button>
-                  <ul className="dropdown-menu">
-                    <li><button className="dropdown-item" onClick={e => { this.handleClick('') }}>Все</button></li>
-                    <li><button className="dropdown-item" onClick={e => { this.handleClick('zachet') }}>Зачет</button></li>
-                    <li><button className="dropdown-item" onClick={e => { this.handleClick('exam') }}>Экзамен</button></li>
-
-                  </ul>
-                </div></th>
-
-                <th></th>
-              </tr>
+              <FilterComponent onSearch={this.search} onPointFilter={this.handlePointFilter.bind(this)} onExamFilter={this.handleExamFilter.bind(this)} />
 
               {rows}</tbody></table></div></div></div>
   }
 
+}
+
+interface FilterInterface {
+  onSearch;
+  onPointFilter;
+  onExamFilter;
+
+}
+
+class FilterComponent extends React.Component<FilterInterface> {
+
+  render() {
+    const { onSearch, onPointFilter, onExamFilter } = this.props;
+    return <tr>
+      <th><input onChange={e => { onSearch(e.target.value) }}
+        type="text"
+        placeholder="Поиск..." ></input></th>
+
+      <th>    <div className="dropdown">
+        <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+          Все
+        </button>
+        <ul className="dropdown-menu ">
+          <li><button className="dropdown-item" onClick={e => { onPointFilter('') }}>Все</button></li>
+          <li><button className="dropdown-item" onClick={e => { onPointFilter('excellent') }}>Отлично</button></li>
+          <li><button className="dropdown-item" onClick={e => { onPointFilter('good') }}>Хорошо</button></li>
+          <li><button className="dropdown-item" onClick={e => { onPointFilter('well') }}>Удовлетворительно</button></li>
+          <li><button className="dropdown-item" onClick={e => { onPointFilter('fail') }}>Неудовлетворительно</button></li>
+        </ul>
+      </div>
+      </th>
+      <th colSpan={2}> <div className="dropdown">
+        <button className="btn btn-light dropdown-toggle  w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
+          Все
+        </button>
+        <ul className="dropdown-menu">
+          <li><button className="dropdown-item" onClick={e => { onExamFilter('') }}>Все</button></li>
+          <li><button className="dropdown-item" onClick={e => { onExamFilter('zachet') }}>Зачет</button></li>
+          <li><button className="dropdown-item" onClick={e => { onExamFilter('exam') }}>Экзамен</button></li>
+
+        </ul>
+      </div></th>
+
+      <th></th>
+    </tr>
+  }
 }
 
 export default MarksPage;

@@ -42,7 +42,6 @@ class ControlPointsPage extends React.Component {
     })
   }
 
-
   pointFilter(val: string) {
     this.setState({
       filtered: this.state.controlPoints.filter(point => point.mark_name === val)
