@@ -15,7 +15,7 @@ class EorPage extends React.Component {
     async request() {
         const eor = await new EorEios().all();
 
-        this.setState({ eor: eor })
+        this.setState({ eor: eor });
         // this.setState({ filtered: eor })
     }
 
@@ -23,32 +23,37 @@ class EorPage extends React.Component {
     search(query) {
         let newList = this.state.eor;
 
-        if (query !== '') {
-            newList = newList.filter(item => {
-                item.show = item.name.toLowerCase().includes(query.toLowerCase());
-                return item.show
-            })
+        if (query.length > 2) {
+            newList = newList.map(item => {
+                item.hide = !item.name.toLowerCase().includes(query.toLowerCase());
+
+                return item;
+            });
+        } else {
+            newList = newList.map(item => {
+                item.hide = false;
+                return item;
+            });
         }
+
         this.setState({
             eor: newList
-        })
-
+        });
     }
 
-
     render() {
-        console.log(this.state.eor)
-        const rows = this.state.eor.map((resurs, indx) => {
-            return <tr key={indx}>
+        const rows = this.state.eor.map((item, indx) => {
+            return item.hide ? '' : <tr key={indx}>
                 <td >
-                    {resurs.name}
+                    {item.name}
                 </td>
                 <td>
-                    <a className="btn btn-sm btn-primary " href={resurs.link} target="_blank"><i
+                    <a className="btn btn-sm btn-primary " href={item.link} target="_blank"><i
                         className="fa fa-link"></i></a>
                 </td>
-            </tr>
-        })
+            </tr>;
+        });
+
         return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
 
             <div className="students-eor">
