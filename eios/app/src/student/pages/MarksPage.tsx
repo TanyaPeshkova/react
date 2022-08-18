@@ -2,12 +2,24 @@ import React from 'react';
 
 import { Marks } from "../../models/student/Marks";
 import { MarksEios } from '../../api/eios/MarksEios';
+import { type } from 'os';
 
 class MarksPage extends React.Component {
 
   state = {
-    marks: [new Marks()],
-    filtered: []
+    marks: [],
+    filter: {
+      name: '',
+      exam: '',
+      score: '',
+    }
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.handleExamFilter = this.handleExamFilter.bind(this);
+    this.handlePointFilter = this.handlePointFilter.bind(this);
   }
 
   componentDidMount() {
@@ -18,40 +30,70 @@ class MarksPage extends React.Component {
     const marks = await new MarksEios().all();
 
     this.setState({ marks: marks })
-    this.setState({ filtered: marks })
   }
 
+  setMarks(marks) {
+    this.setState({
+      marks: marks
+    });
+  }
 
   search = search => {
-    let current = [];
-    let newList = [];
+    this.setState({
+      filter: {
+        text: search
+      }
+    });
 
     if (search !== '') {
-      current = this.state.filtered
-      newList = current.filter(point => {
-        const lc = point.discipline_name.toLowerCase();
-        const filter = search.toLowerCase();
-        return lc.includes(filter)
-      })
-    } else {
-      newList = this.state.marks;
-    }
+      const { marks } = this.state;
 
+      this.setMarks(marks.map(point => {
+        point.hide = !point.discipline_name.toLowerCase().includes(search.toLowerCase());
+
+        return point;
+      }));
+    } else {
+      this.resetFilter();
+    }
+  }
+
+  resetFilterValue() {
     this.setState({
-      filtered: newList
-    })
+      filter: {
+        text: ''
+      }
+    });
+  }
+
+  resetFilter() {
+    const { marks } = this.state;
+
+    this.setMarks(marks.map(point => {
+      point.hide = false;
+
+      return point;
+    }));
+  }
+
+  generalFilter(field, val) {
+    const { marks } = this.state;
+
+    this.resetFilterValue();
+
+    this.setMarks(marks.map(point => {
+      point.hide = !(point[field] === val);
+
+      return point;
+    }));
   }
 
   pointFilter(val: string) {
-    this.setState({
-      filtered: this.state.filtered.filter(point => point.mark_name === val)
-    })
+    this.generalFilter('mark_name', val);
   }
 
   examFilter(val: number) {
-    this.setState({
-      filtered: this.state.filtered.filter(point => point.is_examen === val)
-    })
+    this.generalFilter('is_examen', val);
   }
 
   handlePointFilter(type: string) {
@@ -69,9 +111,7 @@ class MarksPage extends React.Component {
         this.pointFilter('неудовлетворительно')
         break;
       default:
-        this.setState({
-          filtered: [...this.state.marks]
-        });
+        this.resetFilter();
         break;
     }
   }
@@ -84,30 +124,27 @@ class MarksPage extends React.Component {
       case 'zachet':
         this.examFilter(0)
         break;
-
       default:
-        this.setState({
-          filtered: [...this.state.marks]
-        });
+        this.resetFilter();
         break;
     }
   }
 
   render() {
-    const rows = this.state.filtered.map((mark, indx) => {
+    const rows = this.state.marks.map((mark, indx) => {
       const exam = mark.is_examen === 1 ? ' ✓' : '';
       const zachet = mark.is_examen !== 1 ? ' ✓' : '';
 
-      return <tr key={indx}>
+      return mark.hide ? '' : <tr key={indx}>
         <td width="50%">{mark.discipline_name}</td>
         <td>{mark.mark_name}</td>
         <td align="center">{zachet}</td>
         <td align="center"> {exam} </td>
         <td align="center">{mark.number_of_semester}</td>
       </tr>
-    })
-    return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
+    });
 
+    return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
       <div className="students-marks">
         <div className="h3">
           Результаты промежуточной аттестации
@@ -133,34 +170,36 @@ class MarksPage extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <FilterComponent onSearch={this.search} onPointFilter={this.handlePointFilter.bind(this)} onExamFilter={this.handleExamFilter.bind(this)} />
+              <FilterComponent app_state={this.state} onSearch={this.search} onPointFilter={this.handlePointFilter} onExamFilter={this.handleExamFilter} />
 
               {rows}</tbody></table></div></div></div>
   }
 
 }
 
+
 interface FilterInterface {
   onSearch;
   onPointFilter;
   onExamFilter;
-
+  app_state;
 }
 
 class FilterComponent extends React.Component<FilterInterface> {
 
   render() {
-    const { onSearch, onPointFilter, onExamFilter } = this.props;
+    const { onSearch, onPointFilter, onExamFilter, app_state } = this.props;
+
     return <tr>
-      <th><input onChange={e => { onSearch(e.target.value) }}
-        type="text"
-        placeholder="Поиск..." ></input></th>
+      <th>
+        <input onChange={e => { onSearch(e.target.value) }} value={app_state.filter.text} type="text" placeholder="Поиск..." />
+      </th>
 
       <th>    <div className="dropdown">
         <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
           Все
         </button>
-        <ul className="dropdown-menu ">
+        <ul className="dropdown-menu">
           <li><button className="dropdown-item" onClick={e => { onPointFilter('') }}>Все</button></li>
           <li><button className="dropdown-item" onClick={e => { onPointFilter('excellent') }}>Отлично</button></li>
           <li><button className="dropdown-item" onClick={e => { onPointFilter('good') }}>Хорошо</button></li>
