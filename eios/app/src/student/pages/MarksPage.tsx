@@ -1,13 +1,24 @@
 import React from 'react';
 
-import { Marks } from "../../models/student/Marks";
 import { MarksEios } from '../../api/eios/MarksEios';
+import { type } from 'os';
 
 class MarksPage extends React.Component {
 
   state = {
-    marks: [new Marks()],
-    filtered: []
+    marks: [],
+    filter: {
+      name: '',
+      exam: '',
+      score: '',
+    }
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.handleExamFilter = this.handleExamFilter.bind(this);
+    this.handlePointFilter = this.handlePointFilter.bind(this);
   }
 
   componentDidMount() {
@@ -18,40 +29,94 @@ class MarksPage extends React.Component {
     const marks = await new MarksEios().all();
 
     this.setState({ marks: marks })
-    this.setState({ filtered: marks })
   }
 
+  setMarks(marks) {
+    this.setState({
+      marks: marks
+    });
+  }
 
   search = search => {
-    let current = [];
-    let newList = [];
+    this.setState({
+      filter: {
+        name: search,
+        exam: this.state.filter.exam,
+        score: this.state.filter.score
+      }
+    });
 
     if (search !== '') {
-      current = this.state.filtered
-      newList = current.filter(point => {
-        const lc = point.discipline_name.toLowerCase();
-        const filter = search.toLowerCase();
-        return lc.includes(filter)
-      })
-    } else {
-      newList = this.state.marks;
-    }
+      const { marks } = this.state;
+      if ((this.state.filter.exam !== '') || (this.state.filter.score !== '')) {
+        this.setMarks(marks.map(point => {
+          point.hide = !(point.discipline_name.toLowerCase().includes(search.toLowerCase()) && (((point.is_examen === this.state.filter.exam)) || (point.mark_name === this.state.filter.score)));
 
+          return point;
+        }));
+      } else {
+        this.setMarks(marks.map(point => {
+          point.hide = !(point.discipline_name.toLowerCase().includes(search.toLowerCase()));
+
+          return point;
+        }));
+      }
+    } else {
+      this.resetFilter();
+    }
+  }
+
+  resetFilterValue() {
     this.setState({
-      filtered: newList
-    })
+      filter: {
+        name: ''
+      }
+    });
+  }
+
+  resetFilter() {
+    const { marks } = this.state;
+
+    this.setMarks(marks.map(point => {
+      point.hide = false;
+
+      return point;
+    }));
+  }
+
+  generalFilter(field, val) {
+    const { marks } = this.state;
+    this.resetFilterValue();
+
+    this.setMarks(marks.map(point => {
+      point.hide = !((point[field] === val) && point.discipline_name.toLowerCase().includes(this.state.filter.name.toLowerCase()));
+      if (field === 'is_examen') {
+        this.setState({
+          filter: {
+            exam: val,
+            name: this.state.filter.name,
+            score: this.state.filter.score
+          }
+        })
+      } else {
+        this.setState({
+          filter: {
+            score: val,
+            name: this.state.filter.name,
+            exam: this.state.filter.exam
+          }
+        })
+      }
+      return point;
+    }));
   }
 
   pointFilter(val: string) {
-    this.setState({
-      filtered: this.state.filtered.filter(point => point.mark_name === val)
-    })
+    this.generalFilter('mark_name', val);
   }
 
   examFilter(val: number) {
-    this.setState({
-      filtered: this.state.filtered.filter(point => point.is_examen === val)
-    })
+    this.generalFilter('is_examen', val);
   }
 
   handlePointFilter(type: string) {
@@ -69,9 +134,7 @@ class MarksPage extends React.Component {
         this.pointFilter('неудовлетворительно')
         break;
       default:
-        this.setState({
-          filtered: [...this.state.marks]
-        });
+        this.resetFilter();
         break;
     }
   }
@@ -84,30 +147,27 @@ class MarksPage extends React.Component {
       case 'zachet':
         this.examFilter(0)
         break;
-
       default:
-        this.setState({
-          filtered: [...this.state.marks]
-        });
+        this.resetFilter();
         break;
     }
   }
 
   render() {
-    const rows = this.state.filtered.map((mark, indx) => {
+    const rows = this.state.marks.map((mark, indx) => {
       const exam = mark.is_examen === 1 ? ' ✓' : '';
       const zachet = mark.is_examen !== 1 ? ' ✓' : '';
 
-      return <tr key={indx}>
+      return mark.hide ? '' : <tr key={indx}>
         <td width="50%">{mark.discipline_name}</td>
         <td>{mark.mark_name}</td>
         <td align="center">{zachet}</td>
         <td align="center"> {exam} </td>
         <td align="center">{mark.number_of_semester}</td>
       </tr>
-    })
-    return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
+    });
 
+    return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
       <div className="students-marks">
         <div className="h3">
           Результаты промежуточной аттестации
@@ -121,6 +181,7 @@ class MarksPage extends React.Component {
         </div>
 
         <div >
+          <FilterComponent app_state={this.state} onSearch={this.search} onPointFilter={this.handlePointFilter} onExamFilter={this.handleExamFilter} />
           <table className="table">
             <thead>
               <tr>
@@ -133,56 +194,43 @@ class MarksPage extends React.Component {
               </tr>
             </thead>
             <tbody>
-              <FilterComponent onSearch={this.search} onPointFilter={this.handlePointFilter.bind(this)} onExamFilter={this.handleExamFilter.bind(this)} />
 
               {rows}</tbody></table></div></div></div>
   }
 
 }
 
+
 interface FilterInterface {
   onSearch;
   onPointFilter;
   onExamFilter;
-
+  app_state;
 }
 
 class FilterComponent extends React.Component<FilterInterface> {
 
   render() {
-    const { onSearch, onPointFilter, onExamFilter } = this.props;
-    return <tr>
-      <th><input onChange={e => { onSearch(e.target.value) }}
-        type="text"
-        placeholder="Поиск..." ></input></th>
+    const { onSearch, onPointFilter, onExamFilter, app_state } = this.props;
 
-      <th>    <div className="dropdown">
-        <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-          Все
-        </button>
-        <ul className="dropdown-menu ">
-          <li><button className="dropdown-item" onClick={e => { onPointFilter('') }}>Все</button></li>
-          <li><button className="dropdown-item" onClick={e => { onPointFilter('excellent') }}>Отлично</button></li>
-          <li><button className="dropdown-item" onClick={e => { onPointFilter('good') }}>Хорошо</button></li>
-          <li><button className="dropdown-item" onClick={e => { onPointFilter('well') }}>Удовлетворительно</button></li>
-          <li><button className="dropdown-item" onClick={e => { onPointFilter('fail') }}>Неудовлетворительно</button></li>
-        </ul>
-      </div>
-      </th>
-      <th colSpan={2}> <div className="dropdown">
-        <button className="btn btn-light dropdown-toggle  w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-          Все
-        </button>
-        <ul className="dropdown-menu">
-          <li><button className="dropdown-item" onClick={e => { onExamFilter('') }}>Все</button></li>
-          <li><button className="dropdown-item" onClick={e => { onExamFilter('zachet') }}>Зачет</button></li>
-          <li><button className="dropdown-item" onClick={e => { onExamFilter('exam') }}>Экзамен</button></li>
+    return <div>
+      <input onChange={e => { onSearch(e.target.value) }} value={app_state.filter.text} type="text" placeholder="Поиск..." />
+      <select onChange={e => { onPointFilter(e.target.value) }} >
+        <option value=''>Все</option>
+        <option value='excellent'>Отлично</option>
+        <option value='good'>Хорошо</option>
+        <option value='well'>Удовлетворительно</option>
+        <option value='fail'>Неудовлетворительно</option>
+      </select>
+      <select onChange={e => { onExamFilter(e.target.value) }}>
+        <option value=''>Все</option>
+        <option value='exam'>Экзамен</option>
+        <option value='zachet'>Зачет</option>
+      </select>
 
-        </ul>
-      </div></th>
+    </div>
 
-      <th></th>
-    </tr>
+
   }
 }
 

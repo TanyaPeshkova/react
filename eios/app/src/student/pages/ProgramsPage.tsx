@@ -1,15 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
-
-
-import { Programs } from "../../models/student/Programs";
 import { ProgramsEios } from "../../api/eios/ProgramsEios";
 
 class ProgramsPage extends React.Component {
     state = {
-        programs: [new Programs()],
-        filtered: []
+        programs: [],
     }
 
     componentDidMount() {
@@ -20,34 +15,36 @@ class ProgramsPage extends React.Component {
         const programs = await new ProgramsEios().all();
 
         this.setState({ programs: programs })
-        this.setState({ filtered: programs })
+
     }
 
 
 
-    search = search => {
-        let current = [];
-        let newList = [];
+    search(query) {
+        let newList = this.state.programs;
 
-        if (search !== '') {
-            current = this.state.programs
-            newList = current.filter(program => {
-                const lc = program.name.toLowerCase();
-                const filter = search.toLowerCase();
-                return lc.includes(filter)
-            })
+        if (query.length > 0) {
+            newList = newList.map(item => {
+                item.hide = (!item.name.toLowerCase().includes(query.toLowerCase())) && (!item.id.toLowerCase().includes(query.toLowerCase()));
+
+                return item;
+            });
         } else {
-            newList = this.state.programs;
+            newList = newList.map(item => {
+                item.hide = false;
+                return item;
+            });
         }
 
         this.setState({
-            filtered: newList
-        })
+            eor: newList
+        });
     }
 
+
     render() {
-        const rows = this.state.filtered.map((program, indx) => {
-            return <tr key={indx}>
+        const rows = this.state.programs.map((program, indx) => {
+            return program.hide ? '' : <tr key={indx}>
                 <td >
                     {program.id}
                 </td>

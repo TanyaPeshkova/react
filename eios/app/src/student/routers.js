@@ -7,10 +7,10 @@ import MarksPage from "./pages/MarksPage";
 import CompetencePage from "./pages/CompetencePage"
 
 
-// export const routers = 
-//     { path: "/*",
-//     name: "Profile",
-//     Component: ProfilePage}
+export const routers = 
+    { path: "/*",
+    name: "Profile",
+    Component: ProfilePage}
 
 // export const routers = 
 //     { path: "/*",
@@ -32,10 +32,10 @@ import CompetencePage from "./pages/CompetencePage"
     // name: "ControlPoints",
     // Component: ControlPointsPage}
  
-    export const routers = 
-    { path: "/*",
-    name: "Marks",
-    Component: MarksPage}
+    // export const routers = 
+    // { path: "/*",
+    // name: "Marks",
+    // Component: MarksPage}
 
     // export const routers = 
     // { path: "/*",

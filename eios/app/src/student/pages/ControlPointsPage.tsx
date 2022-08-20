@@ -1,13 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-import { ControlPoints } from "../../models/student/ControlPoints";
 import { ControlPointsEios } from '../../api/eios/ControlPointsEios';
 
 class ControlPointsPage extends React.Component {
   state = {
-    controlPoints: [new ControlPoints()],
-    filtered: []
+    controlPoints: [],
+    filter: {
+      name: '',
+      score: ''
+    }
+  }
+  constructor(props) {
+    super(props);
+    this.handlePointFilter = this.handlePointFilter.bind(this);
   }
 
   componentDidMount() {
@@ -18,36 +23,43 @@ class ControlPointsPage extends React.Component {
     const controlPoints = await new ControlPointsEios().all();
 
     this.setState({ controlPoints: controlPoints })
-    this.setState({ filtered: controlPoints })
   }
 
+
+  setControlPoints(points) {
+    this.setState({
+      controlPoints: points
+    });
+  }
 
   search = search => {
-    let current = [];
-    let newList = [];
+    this.setState({
+      filter: {
+        name: search,
+        score: this.state.filter.score
+      }
+    });
 
     if (search !== '') {
-      current = this.state.controlPoints
-      newList = current.filter(point => {
-        const lc = point.name_dis.toLowerCase();
-        const filter = search.toLowerCase();
-        return lc.includes(filter)
-      })
+      const { controlPoints } = this.state;
+      if ((this.state.filter.score !== '')) {
+        this.setControlPoints(controlPoints.map(point => {
+          point.hide = !(point.name_dis.toLowerCase().includes(search.toLowerCase()) && ((point.mark_name === this.state.filter.score)));
+
+          return point;
+        }));
+      } else {
+        this.setControlPoints(controlPoints.map(point => {
+          point.hide = !(point.name_dis.toLowerCase().includes(search.toLowerCase()));
+
+          return point;
+        }));
+      }
     } else {
-      newList = this.state.controlPoints;
+      this.resetFilter();
     }
-
-    this.setState({
-      filtered: newList
-    })
   }
-
-  pointFilter(val: string) {
-    this.setState({
-      filtered: this.state.controlPoints.filter(point => point.mark_name === val)
-    })
-  }
-  handleClick(type: string) {
+  handlePointFilter(type: string) {
     switch (type) {
       case 'excellent':
         this.pointFilter('отлично')
@@ -61,21 +73,54 @@ class ControlPointsPage extends React.Component {
       case 'fail':
         this.pointFilter('неудовлетворительно')
         break;
-
       default:
-        this.setState({
-          filtered: [...this.state.controlPoints]
-        });
+        this.resetFilter();
         break;
     }
+  }
+  generalFilter(field, val) {
+    const { controlPoints } = this.state;
+    this.resetFilterValue();
+
+    this.setControlPoints(controlPoints.map(point => {
+      point.hide = !((point[field] === val) && point.name_dis.toLowerCase().includes(this.state.filter.name.toLowerCase()));
+      this.setState({
+        filter: {
+          score: val,
+          name: this.state.filter.name,
+        }
+      })
+      return point;
+    }));
+  }
+
+  pointFilter(val: string) {
+    this.generalFilter('mark_name', val);
+  }
+  resetFilterValue() {
+    this.setState({
+      filter: {
+        name: ''
+      }
+    });
+  }
+
+  resetFilter() {
+    const { controlPoints } = this.state;
+
+    this.setControlPoints(controlPoints.map(point => {
+      point.hide = false;
+
+      return point;
+    }));
   }
 
 
   render() {
 
-    const rows = this.state.filtered.map((point, indx) => {
+    const rows = this.state.controlPoints.map((point, indx) => {
       const mark = point.mark_name !== "" ? point.mark_name : 'не выбрано';
-      return <tr key={indx}>
+      return point.hide ? '' : <tr key={indx}>
         <td >
           {point.name_dis}
         </td>
@@ -100,6 +145,7 @@ class ControlPointsPage extends React.Component {
           <a className="btn btn-primary mb-4" href="https://eios.tspu.edu.ru/students/kt/file_export/">
             Скачать данные в Excel-файл</a>
         </div>
+        <FilterComponent app_state={this.state} onSearch={this.search} onPointFilter={this.handlePointFilter} />
 
         <table className="table">
           <thead>
@@ -110,30 +156,37 @@ class ControlPointsPage extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th><input onChange={e => this.search(e.target.value)}
-                type="text"
-                placeholder="Поиск..." ></input></th>
-              <th></th>
-              <th>    <div className="dropdown">
-                <button className="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                  Все
-                </button>
-                <ul className="dropdown-menu">
-                  <li><button className="dropdown-item" onClick={e => { this.handleClick('') }}>Все</button></li>
-                  <li><button className="dropdown-item" onClick={e => { this.handleClick('excellent') }}>Отлично</button></li>
-                  <li><button className="dropdown-item" onClick={e => { this.handleClick('good') }}>Хорошо</button></li>
-                  <li><button className="dropdown-item" onClick={e => { this.handleClick('well') }}>Удовлетворительно</button></li>
-                  <li><button className="dropdown-item" onClick={e => { this.handleClick('fail') }}>Неудовлетворительно</button></li>
-                </ul>
-              </div>
-              </th>
-            </tr>
 
             {rows}</tbody></table></div></div>
   }
 
 }
 
+interface FilterInterface {
+  onSearch;
+  onPointFilter;
+  app_state;
+}
+
+class FilterComponent extends React.Component<FilterInterface> {
+
+  render() {
+    const { onSearch, onPointFilter, app_state } = this.props;
+
+    return <div>
+      <input onChange={e => { onSearch(e.target.value) }} value={app_state.filter.text} type="text" placeholder="Поиск..." />
+      <select onChange={e => { onPointFilter(e.target.value) }} >
+        <option value=''>Все</option>
+        <option value='excellent'>Отлично</option>
+        <option value='good'>Хорошо</option>
+        <option value='well'>Удовлетворительно</option>
+        <option value='fail'>Неудовлетворительно</option>
+      </select>
+
+    </div>
+
+
+  }
+}
 
 export default ControlPointsPage;
