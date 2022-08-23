@@ -1,0 +1,20 @@
+{
+    "response":[ {
+        "groups": "483",
+        "groupsOUSK": "483",
+        "plan_id": 1331,
+        "Speciality_id": 3,
+        "Speciality_code": "09.03.02",
+        "Speciality_name": "Информационные системы и технологии",
+        "education_level_id": 1,
+        "op_full_name": "Направление подготовки: 09.03.02 Информационные системы и технологии\r\nНаправленность (профиль): Информационные технологии в образовании",
+        "OP_id": 82,
+        "plan_server_id": 3119,
+        "url": "https://tspu.edu.ru/files/sveden2/opop/2021-2022/090302_IST_Obrazovanie/483/UP/UP.pdf",
+        "url_KUG": "https://tspu.edu.ru/files/sveden2/opop/2021-2022/090302_IST_Obrazovanie/483/UP/KUG.pdf",
+        "OP_actual": 1,
+        "UP_actual": 1,
+        "UP_public": 1
+    }],
+    "count": 15
+}

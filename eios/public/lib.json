@@ -1,0 +1,25 @@
+{
+    "response": [
+        {
+            "name": "ЭБС \"iBooks\"",
+            "img": "https://libserv.tspu.edu.ru/images2/lib_news/resurs/aibyks.jpg",
+            "link": "https://ibooks.ru"
+        },
+        {
+            "name": "ЭБС \"Университетская библиотека онлайн\"",
+            "img": "https://libserv.tspu.edu.ru/images2/lib_news/resurs/Bez_nazvaniya.jpg",
+            "link": "https://biblioclub.ru/"
+        },
+        {
+            "name": "ЭБС \"IPRBooks\"",
+            "img": "https://libserv.tspu.edu.ru/images2/lib_news/resurs/logotype.jpg",
+            "link": "https://www.iprbookshop.ru/autologin?domain=7431&id=51391&time=20220823105928&sign=dd3f7cc796b5bca56b1562164ac9de68&ut=1"
+        },
+        {
+            "name": "ЭБС \"Лань\"",
+            "img": "https://libserv.tspu.edu.ru/images/lib_news/documents/vneshni_res/Lan/lan01.jpg",
+            "link": "https://e.lanbook.com/"
+        }
+    ],
+    "count": 4
+}

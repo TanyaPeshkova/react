@@ -10,7 +10,9 @@ module.exports = {
         eui: './app/src/student/app.js',
         controlPoints: './app/src/student/app.js',
         marks: './app/src/student/app.js',
-        competence: './app/src/student/app.js'
+        competence: './app/src/student/app.js',
+        lib: './app/src/student/app.js',
+        plan: './app/src/student/app.js'
 
     },
     output: {
