@@ -44,14 +44,13 @@ import PlanPage from "./pages/PlanPage";
 // name: "Competence",
 // Component: CompetencePage}
 
-export const routers = 
-{ path: "/*",
-name: "Lib",
-Component: LibPage}
+// export const routers = 
+// { path: "/*",
+// name: "Lib",
+// Component: LibPage}
 
-// export const routers =
-// {
-//     path: "/*",
-//     name: "Plan",
-//     Component: PlanPage
-// }
+export const routers =
+    {path: "/*",
+    name: "Plan",
+    Component: PlanPage
+    }   

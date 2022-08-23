@@ -173,15 +173,17 @@ class FilterComponent extends React.Component<FilterInterface> {
   render() {
     const { onSearch, onPointFilter, app_state } = this.props;
 
-    return <div>
-      <input onChange={e => { onSearch(e.target.value) }} value={app_state.filter.text} type="text" placeholder="Поиск..." />
-      <select onChange={e => { onPointFilter(e.target.value) }} >
-        <option value=''>Все</option>
-        <option value='excellent'>Отлично</option>
-        <option value='good'>Хорошо</option>
-        <option value='well'>Удовлетворительно</option>
-        <option value='fail'>Неудовлетворительно</option>
-      </select>
+    return <div className='row'>
+      <input onChange={e => { onSearch(e.target.value) }} value={app_state.filter.text} type="text" placeholder="Поиск..." className='col-4' />
+      <div className='col-4'>
+        <select onChange={e => { onPointFilter(e.target.value) }} className="form-select  form-select-sm " aria-label=".form-select-sm example">
+          <option value=''>Все</option>
+          <option value='excellent'>Отлично</option>
+          <option value='good'>Хорошо</option>
+          <option value='well'>Удовлетворительно</option>
+          <option value='fail'>Неудовлетворительно</option>
+        </select>
+      </div>
 
     </div>
 
