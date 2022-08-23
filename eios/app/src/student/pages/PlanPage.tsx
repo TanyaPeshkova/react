@@ -1,6 +1,6 @@
 import React from 'react';
-
-import { PlanEios } from "../../api/eios/PlanEios";
+import { PlanEios } from "../../../api/eios/student/PlanEios";
+import { withParams } from "../../helpers";
 
 
 class PlanPage extends React.Component {
@@ -14,27 +14,23 @@ class PlanPage extends React.Component {
 
     async request() {
         const plan = await new PlanEios().all();
-
-        this.setState({ plan: plan })
+        this.setState({ plan: plan });
     }
 
     render() {
         const rows = this.state.plan.map((item, indx) => {
             return <div className="row mb-3" key={indx}>
                 <div className="col-md-12 mx-auto">
-                    <a className="btn btn-primary text-white" href={item.url} target="_blank">Учебный план <i className="fa fa-link"></i></a>
+                    <a className="btn btn-sm btn-tspu text-white" href={item.url} target="_blank">
+                        Учебный план <i className="fa fa-link"></i></a>
                 </div>
-            </div >
-
+            </div>;
         })
-        return <div> <div className="h3 mb-5 mt-5 pt-5">
-            Учебный план
-        </div>
+        return <div className={'student-plan'}>
+            <h3 className={'mb-3'}>Учебный план</h3>
             {rows}
-        </div >
+        </div>;
     }
-
 }
 
-
-export default PlanPage;
+export default withParams(PlanPage);

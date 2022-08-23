@@ -1,6 +1,6 @@
-import React from 'react';
-
-import { LibEios } from "../../api/eios/LibEios";
+import React from "react";
+import { LibEios } from "../../../api/eios/student/LibEios";
+import { withParams } from "../../helpers";
 
 
 class LibPage extends React.Component {
@@ -25,19 +25,16 @@ class LibPage extends React.Component {
                     <img src={item.img} className="img" alt="" />
                     <div className="mt-3">{item.name}</div>
                 </a>
-            </div>
+            </div>;
+        });
 
-        })
         return <div className="students-lib mt-5 pt-5">
-
             <h3 className="mb-5">Электронные библиотечные системы</h3>
             <div className="row text-center">
                 {rows}
             </div>
-        </div>
+        </div>;
     }
-
 }
 
-
-export default LibPage;
+export default withParams(LibPage);

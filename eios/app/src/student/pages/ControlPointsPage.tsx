@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { ControlPointsEios } from '../../api/eios/ControlPointsEios';
+import { ControlPointsEios } from '../../../api/eios/student/ControlPointsEios';
+import { withParams } from "../../helpers";
 
 class ControlPointsPage extends React.Component {
   state = {
@@ -10,8 +11,11 @@ class ControlPointsPage extends React.Component {
       score: ''
     }
   }
+
   constructor(props) {
     super(props);
+
+    this.search = this.search.bind(this);
     this.handlePointFilter = this.handlePointFilter.bind(this);
   }
 
@@ -32,26 +36,27 @@ class ControlPointsPage extends React.Component {
     });
   }
 
-  search = search => {
+  search(e) {
+    const { value } = e.target;
+
     this.setState({
       filter: {
-        name: search,
+        name: value,
         score: this.state.filter.score
       }
     });
 
-    if (search !== '') {
+    if (value.length > 1) {
       const { controlPoints } = this.state;
       if ((this.state.filter.score !== '')) {
         this.setControlPoints(controlPoints.map(point => {
-          point.hide = !(point.name_dis.toLowerCase().includes(search.toLowerCase()) && ((point.mark_name === this.state.filter.score)));
+          point.hide = !(point.name_dis.toLowerCase().includes(value.toLowerCase()) && ((point.mark_name === this.state.filter.score)));
 
           return point;
         }));
       } else {
         this.setControlPoints(controlPoints.map(point => {
-          point.hide = !(point.name_dis.toLowerCase().includes(search.toLowerCase()));
-
+          point.hide = !(point.name_dis.toLowerCase().includes(value.toLowerCase()));
           return point;
         }));
       }
@@ -59,8 +64,11 @@ class ControlPointsPage extends React.Component {
       this.resetFilter();
     }
   }
-  handlePointFilter(type: string) {
-    switch (type) {
+
+  handlePointFilter(e) {
+    const { value } = e.target;
+
+    switch (value) {
       case 'excellent':
         this.pointFilter('отлично')
         break;
@@ -78,6 +86,7 @@ class ControlPointsPage extends React.Component {
         break;
     }
   }
+
   generalFilter(field, val) {
     const { controlPoints } = this.state;
     this.resetFilterValue();
@@ -97,6 +106,7 @@ class ControlPointsPage extends React.Component {
   pointFilter(val: string) {
     this.generalFilter('mark_name', val);
   }
+
   resetFilterValue() {
     this.setState({
       filter: {
@@ -107,59 +117,55 @@ class ControlPointsPage extends React.Component {
 
   resetFilter() {
     const { controlPoints } = this.state;
-
     this.setControlPoints(controlPoints.map(point => {
       point.hide = false;
-
       return point;
     }));
   }
 
 
   render() {
-
     const rows = this.state.controlPoints.map((point, indx) => {
       const mark = point.mark_name !== "" ? point.mark_name : 'не выбрано';
-      return point.hide ? '' : <tr key={indx}>
-        <td >
-          {point.name_dis}
-        </td>
-        <td>
-          {point.n_sem}
-        </td>
-        <td>
-          {mark}
-        </td>
-      </tr>
-    })
-    return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
+      return point.hide ? null :
+        <tr key={indx}>
+          <td>{point.name_dis}</td>
+          <td>{point.n_sem}</td>
+          <td>{mark}</td>
+        </tr>;
+    });
 
-      <div className="students-kt">
-        <div className="h3 pt-3">
-          Ход образовательного процесса
-        </div>
-        <div className="h5 mt-3 mb-5">
-          Текущий контроль успеваемости обучающегося (результаты контрольных точек)
-        </div>
-        <div>
-          <a className="btn btn-primary mb-4" href="https://eios.tspu.edu.ru/students/kt/file_export/">
-            Скачать данные в Excel-файл</a>
-        </div>
-        <FilterComponent app_state={this.state} onSearch={this.search} onPointFilter={this.handlePointFilter} />
+    return <div className="students-kt">
+      <h3 className="">
+        Ход образовательного процесса
+      </h3>
+      <h5 className="mb-3">
+        Текущий контроль успеваемости обучающегося (результаты контрольных точек)
+      </h5>
+      <div className={'mb-3'}>
+        <a className="btn btn-sm btn-tspu mb-4" href="/students/kt/file_export">
+          Скачать данные в Excel-файл</a>
+      </div>
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Дисциплина</th>
-              <th>Семестр</th>
-              <th>Результат</th>
-            </tr>
-          </thead>
-          <tbody>
+      <div className={'mb-3'}>
+        <FilterComponent
+          app_state={this.state}
+          onSearch={this.search}
+          onPointFilter={this.handlePointFilter} />
+      </div>
 
-            {rows}</tbody></table></div></div>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Дисциплина</th>
+            <th>Семестр</th>
+            <th>Результат</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    </div>;
   }
-
 }
 
 interface FilterInterface {
@@ -169,14 +175,16 @@ interface FilterInterface {
 }
 
 class FilterComponent extends React.Component<FilterInterface> {
-
   render() {
     const { onSearch, onPointFilter, app_state } = this.props;
 
-    return <div className='row'>
-      <input onChange={e => { onSearch(e.target.value) }} value={app_state.filter.text} type="text" placeholder="Поиск..." className='col-4' />
-      <div className='col-4'>
-        <select onChange={e => { onPointFilter(e.target.value) }} className="form-select  form-select-sm " aria-label=".form-select-sm example">
+    return <div className={'row'}>
+      <div className="col-6">
+        <input autoFocus onChange={onSearch} className={'form-control'} value={app_state.filter.text} type="text"
+          placeholder="Дисциплина" />
+      </div>
+      <div className="col-6">
+        <select className={'form-control'} onChange={onPointFilter}>
           <option value=''>Все</option>
           <option value='excellent'>Отлично</option>
           <option value='good'>Хорошо</option>
@@ -184,11 +192,8 @@ class FilterComponent extends React.Component<FilterInterface> {
           <option value='fail'>Неудовлетворительно</option>
         </select>
       </div>
-
-    </div>
-
-
+    </div>;
   }
 }
 
-export default ControlPointsPage;
+export default withParams(ControlPointsPage);

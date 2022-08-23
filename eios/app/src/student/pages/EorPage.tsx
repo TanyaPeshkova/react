@@ -1,11 +1,17 @@
 import React from 'react';
 
-import { EorEios } from '../../api/eios/EorEios';
+import { EorEios } from '../../../api/eios/student/EorEios';
+import { withParams } from "../../helpers";
+import { Loader } from "../../../components/loader";
 
 class EorPage extends React.Component {
     state = {
         eor: [],
-        // filtered: []
+    }
+
+    constructor(props) {
+        super(props);
+        this.search = this.search.bind(this)
     }
 
     componentDidMount() {
@@ -14,18 +20,16 @@ class EorPage extends React.Component {
 
     async request() {
         const eor = await new EorEios().all();
-
         this.setState({ eor: eor });
-        // this.setState({ filtered: eor })
     }
 
-
-    search(query) {
+    search(e) {
+        const { value } = e.target;
         let newList = this.state.eor;
 
-        if (query.length > 0) {
+        if (value.length > 0) {
             newList = newList.map(item => {
-                item.hide = !item.name.toLowerCase().includes(query.toLowerCase());
+                item.hide = !item.name.toLowerCase().includes(value.toLowerCase());
 
                 return item;
             });
@@ -43,42 +47,48 @@ class EorPage extends React.Component {
 
     render() {
         const rows = this.state.eor.map((item, indx) => {
-            return item.hide ? '' : <tr key={indx}>
-                <td >
+            return item.hide ? null : <tr key={indx}>
+                <td>
                     {item.name}
                 </td>
                 <td>
-                    <a className="btn btn-sm btn-primary " href={item.link} target="_blank"><i
+                    <a className="btn btn-sm btn-tspu " href={item.link} target="_blank"><i
                         className="fa fa-link"></i></a>
                 </td>
             </tr>;
         });
 
-        return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
+        const template = rows.length === 0 ? <Loader /> :
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>Название</th>
+                        <th>Ссылка</th>
+                    </tr>
+                </thead>
+                <tbody>{rows}</tbody>
+            </table>;
 
-            <div className="students-eor">
-                <div className="h3 mb-5">
-                    Электронные образовательные ресурсы, указанные в рабочих программах
-                </div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <input onChange={e => this.search(e.target.value)}
-                                    type="text"
-                                    placeholder="Поиск..." ></input></th>
-                            <th></th>
-
-                        </tr>
-                        <tr>
-                            <th>Название</th>
-                            <th>Ссылка</th>
-                        </tr>
-                    </thead>
-                    <tbody>{rows}</tbody></table></div></div>
+        return <div className="students-eor">
+            <h3 className="mb-3">
+                Электронные образовательные ресурсы, указанные в рабочих программах
+            </h3>
+            <div className={'mb-3'}>
+                <input autoFocus
+                    onChange={this.search}
+                    type="text"
+                    className={'form-control'}
+                    placeholder="Название" />
+            </div>
+            {template}
+        </div>;
     }
-
 }
 
 
-export default EorPage;
+export default withParams(EorPage); s

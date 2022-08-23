@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-import { StudentEios } from "../../models/student/StudentEios";
-import { ProfileEios } from "../../api/eios/ProfileEios";
+import { StudentEios } from "../../../models/student/StudentEios";
+import { ProfileEios } from "../../../api/eios/student/ProfileEios";
+import { withParams } from "../../helpers";
 
 
 class ProfilePage extends React.Component {
@@ -62,33 +63,35 @@ class ProfilePage extends React.Component {
                 </tr>
                 <tr>
                     <td>Телефон</td>
-                    <td><a href="/students/edit/"
-                        className="btn btn-sm btn-outline-primary float-right js-add-phone">
-                        <i className="fa fa-plus"></i>
-                    </a> </td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><a href="/students/edit/"
+                    <td><a href="/static/app/src/student/pages/ProfilePage"
                         className="btn btn-sm btn-outline-primary float-right js-add-phone">
                         <i className="fa fa-plus"></i>
                     </a></td>
                 </tr>
-
-            </tbody>
+                <tr>
+                    <td>Email</td>
+                    <td><a href="/static/app/src/student/pages/ProfilePage"
+                        className="btn btn-sm btn-outline-primary float-right js-add-phone">
+                        <i className="fa fa-plus"></i>
+                    </a></td>
+                </tr>
+            </tbody>;
         })
         return <div className="student-profile person-profile">
             <div className="row">
                 <div className="col mt-5">
                     {student_id}
                 </div>
-            </div><div className='row'>
-                <div className='col-12'><table className="table person-info-list">
-                    {rows}</table>
-                </div></div></div>
+            </div>
+            <div className='row'>
+                <div className='col-12'>
+                    <table className="table person-info-list">{rows}</table>
+                </div>
+            </div>
+        </div>;
     }
 
 }
 
 
-export default ProfilePage;
+export default withParams(ProfilePage);

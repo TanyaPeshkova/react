@@ -1,7 +1,7 @@
 import React from 'react';
+import { MarksEios } from '../../../api/eios/student/MarksEios';
+import { withParams } from "../../helpers";
 
-import { MarksEios } from '../../api/eios/MarksEios';
-import { type } from 'os';
 
 class MarksPage extends React.Component {
 
@@ -17,6 +17,7 @@ class MarksPage extends React.Component {
   constructor(props) {
     super(props);
 
+    this.search = this.search.bind(this);
     this.handleExamFilter = this.handleExamFilter.bind(this);
     this.handlePointFilter = this.handlePointFilter.bind(this);
   }
@@ -37,26 +38,28 @@ class MarksPage extends React.Component {
     });
   }
 
-  search = search => {
+  search(e) {
+    const { value } = e.target;
+
     this.setState({
       filter: {
-        name: search,
+        name: value,
         exam: this.state.filter.exam,
         score: this.state.filter.score
       }
     });
 
-    if (search !== '') {
+    if (value.length > 1) {
       const { marks } = this.state;
       if ((this.state.filter.exam !== '') || (this.state.filter.score !== '')) {
         this.setMarks(marks.map(point => {
-          point.hide = !(point.discipline_name.toLowerCase().includes(search.toLowerCase()) && (((point.is_examen === this.state.filter.exam)) || (point.mark_name === this.state.filter.score)));
+          point.hide = !(point.discipline_name.toLowerCase().includes(value.toLowerCase()) && (((point.is_examen === this.state.filter.exam)) || (point.mark_name === this.state.filter.score)));
 
           return point;
         }));
       } else {
         this.setMarks(marks.map(point => {
-          point.hide = !(point.discipline_name.toLowerCase().includes(search.toLowerCase()));
+          point.hide = !(point.discipline_name.toLowerCase().includes(value.toLowerCase()));
 
           return point;
         }));
@@ -87,26 +90,27 @@ class MarksPage extends React.Component {
   generalFilter(field, val) {
     const { marks } = this.state;
     this.resetFilterValue();
+    let exam = this.state.filter.exam;
+    let name = this.state.filter.name;
+    let score = this.state.filter.score;
 
     this.setMarks(marks.map(point => {
       point.hide = !((point[field] === val) && point.discipline_name.toLowerCase().includes(this.state.filter.name.toLowerCase()));
+
       if (field === 'is_examen') {
-        this.setState({
-          filter: {
-            exam: val,
-            name: this.state.filter.name,
-            score: this.state.filter.score
-          }
-        })
+        exam = val;
       } else {
-        this.setState({
-          filter: {
-            score: val,
-            name: this.state.filter.name,
-            exam: this.state.filter.exam
-          }
-        })
+        score = val;
       }
+
+      this.setState({
+        filter: {
+          exam: exam,
+          name: name,
+          score: score,
+        }
+      });
+
       return point;
     }));
   }
@@ -119,8 +123,10 @@ class MarksPage extends React.Component {
     this.generalFilter('is_examen', val);
   }
 
-  handlePointFilter(type: string) {
-    switch (type) {
+  handlePointFilter(e) {
+    const { value } = e.target;
+
+    switch (value) {
       case 'excellent':
         this.pointFilter('отлично')
         break;
@@ -139,8 +145,9 @@ class MarksPage extends React.Component {
     }
   }
 
-  handleExamFilter(type: string) {
-    switch (type) {
+  handleExamFilter(e) {
+    const { value } = e.target;
+    switch (value) {
       case 'exam':
         this.examFilter(1)
         break;
@@ -155,51 +162,51 @@ class MarksPage extends React.Component {
 
   render() {
     const rows = this.state.marks.map((mark, indx) => {
-      const exam = mark.is_examen === 1 ? ' ✓' : '';
-      const zachet = mark.is_examen !== 1 ? ' ✓' : '';
+      const exam = mark.is_examen === 1 ? ' ✓' : null;
+      const zachet = mark.is_examen !== 1 ? ' ✓' : null;
 
-      return mark.hide ? '' : <tr key={indx}>
+      return mark.hide ? null : <tr key={indx}>
         <td width="50%">{mark.discipline_name}</td>
         <td>{mark.mark_name}</td>
         <td align="center">{zachet}</td>
-        <td align="center"> {exam} </td>
+        <td align="center">{exam}</td>
         <td align="center">{mark.number_of_semester}</td>
       </tr>
     });
 
-    return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
-      <div className="students-marks">
-        <div className="h3">
-          Результаты промежуточной аттестации
-        </div>
-        <div className="h5 mb-5">
-          Оценки по результатам сессий
-        </div>
-        <div>
-          <a className="btn btn-primary mb-4" href="https://eios.tspu.edu.ru/students/marks/file_export/">
-            Скачать данные в Excel-файл</a>
-        </div>
-
-        <div >
-          <FilterComponent app_state={this.state} onSearch={this.search} onPointFilter={this.handlePointFilter} onExamFilter={this.handleExamFilter} />
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Дисциплина</th>
-                <th>Оценка</th>
-                <th>Зачет</th>
-                <th>Экзамен</th>
-
-                <th>Семестр</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              {rows}</tbody></table></div></div></div>
+    return <div className="students-marks">
+      <h3 className="mb-3">
+        Результаты промежуточной аттестации
+      </h3>
+      <h5 className="mb-3">
+        Оценки по результатам сессий
+      </h5>
+      <div className={'mb-3'}>
+        <a className="btn btn-sm btn-tspu " href="/students/marks/file_export/">
+          Скачать данные в Excel-файл</a>
+      </div>
+      <div className={'mb-3'}>
+        <FilterComponent
+          app_state={this.state}
+          onSearch={this.search}
+          onPointFilter={this.handlePointFilter}
+          onExamFilter={this.handleExamFilter} />
+      </div>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Дисциплина</th>
+            <th>Оценка</th>
+            <th>Зачет</th>
+            <th>Экзамен</th>
+            <th>Семестр</th>
+          </tr>
+        </thead>
+        <tbody>{rows}</tbody>
+      </table>
+    </div>;
   }
-
 }
-
 
 interface FilterInterface {
   onSearch;
@@ -213,27 +220,32 @@ class FilterComponent extends React.Component<FilterInterface> {
   render() {
     const { onSearch, onPointFilter, onExamFilter, app_state } = this.props;
 
-    return <div className='row'>
-      <input onChange={e => { onSearch(e.target.value) }} value={app_state.filter.text} type="text" placeholder="Поиск..." className='col-4' />
-      <div className='col-4'>
-        <select onChange={e => { onPointFilter(e.target.value) }} className="form-select  form-select-sm " aria-label=".form-select-sm example">
-          <option value='' selected>Все</option>
+    return <div className={'row mb-3'}>
+      <div className="col-6">
+        <input autoFocus onChange={onSearch}
+          className={'form-control'}
+          value={app_state.filter.text}
+          type="text"
+          placeholder="Дисциплина" />
+      </div>
+      <div className="col-3">
+        <select onChange={onPointFilter} className={'form-control'}>
+          <option value=''>Все</option>
           <option value='excellent'>Отлично</option>
           <option value='good'>Хорошо</option>
           <option value='well'>Удовлетворительно</option>
           <option value='fail'>Неудовлетворительно</option>
-        </select></div>
-      <div className='col-4'>
-        <select onChange={e => { onExamFilter(e.target.value) }} className="form-select  form-select-sm " aria-label=".form-select-sm example">
+        </select>
+      </div>
+      <div className="col-3">
+        <select onChange={onExamFilter} className={'form-control'}>
           <option value=''>Все</option>
           <option value='exam'>Экзамен</option>
           <option value='zachet'>Зачет</option>
         </select>
       </div>
-    </div>
-
-
+    </div>;
   }
 }
 
-export default MarksPage;
+export default withParams(MarksPage);
