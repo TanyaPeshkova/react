@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { CompetenceEios } from '../../api/eios/CompetenceEios';
+import {CompetenceEios} from '../../../api/eios/student/CompetenceEios';
+import {withParams} from "../../helpers";
 
 class CompetencePage extends React.Component {
     state = {
@@ -14,9 +15,8 @@ class CompetencePage extends React.Component {
     async request() {
         const competence = await new CompetenceEios().all();
 
-        this.setState({ competence: competence })
+        this.setState({competence: competence})
     }
-
 
     search(query) {
         let newList = this.state.competence;
@@ -40,12 +40,12 @@ class CompetencePage extends React.Component {
     }
 
     render() {
-
         const rows = this.state.competence.map((comp, indx) => {
             return <th className="komp komp-uk"
-                data-toggle="tooltip"
-                title={comp.name}>{comp.id}</th>
-        })
+                       data-toggle="tooltip"
+                       title={comp.name}>{comp.id}</th>
+        });
+
         return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
             <div className="students-competence">
                 <div className="h3 mb-5">
@@ -54,21 +54,28 @@ class CompetencePage extends React.Component {
                 <div className="h5 mb-3">
                     <button className="btn btn-sm btn-tspu show_all">Все</button>
                     <button className="btn btn-sm btn-tspu komp-switch" title="Общекультурные компетенции"
-                        data-x=".komp-uk">УК</button>
+                            data-x=".komp-uk">УК
+                    </button>
                     <button className="btn btn-sm btn-tspu komp-switch" title="Общекультурные компетенции"
-                        data-x=".komp-opk">ОПК</button>
+                            data-x=".komp-opk">ОПК
+                    </button>
                     <button className="btn btn-sm btn-tspu komp-switch" title="Общекультурные компетенции"
-                        data-x=".komp-pk">ПК</button>
+                            data-x=".komp-pk">ПК
+                    </button>
 
                 </div>
                 <table className="table table-bordered komps-table">
-                    <thead><td>
+                    <thead>
+                    <td>
                         <th>Дисциплина</th>
                         {rows}
                     </td>
-                    </thead><tbody></tbody></table></div></div>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
     }
-
 }
 
-export default CompetencePage;
+export default withParams(CompetencePage);

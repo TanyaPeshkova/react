@@ -1,10 +1,17 @@
 import React from 'react';
-
-import { ProgramsEios } from "../../api/eios/ProgramsEios";
+import {ProgramsEios} from "../../../api/eios/student/ProgramsEios";
+import {withParams} from "../../helpers";
+import {Loader} from "../../../components/loader";
 
 class ProgramsPage extends React.Component {
     state = {
         programs: [],
+    }
+
+    constructor(props) {
+        super(props);
+
+        this.search = this.search.bind(this);
     }
 
     componentDidMount() {
@@ -14,19 +21,17 @@ class ProgramsPage extends React.Component {
     async request() {
         const programs = await new ProgramsEios().all();
 
-        this.setState({ programs: programs })
-
+        this.setState({programs: programs});
     }
 
+    search(e) {
+        const {value} = e.target;
 
-
-    search(query) {
         let newList = this.state.programs;
 
-        if (query.length > 0) {
+        if (value.length > 0) {
             newList = newList.map(item => {
-                item.hide = (!item.name.toLowerCase().includes(query.toLowerCase())) && (!item.id.toLowerCase().includes(query.toLowerCase()));
-
+                item.hide = (!item.name.toLowerCase().includes(value.toLowerCase())) && (!item.id.toLowerCase().includes(value.toLowerCase()));
                 return item;
             });
         } else {
@@ -41,44 +46,44 @@ class ProgramsPage extends React.Component {
         });
     }
 
-
     render() {
         const rows = this.state.programs.map((program, indx) => {
-            return program.hide ? '' : <tr key={indx}>
-                <td >
-                    {program.id}
-                </td>
-                <td>
-                    <a href={program.rpdUrl} target="_blank">{program.name}</a>
-                </td>
-            </tr>
-        })
-        return <div className="container-md container-fluid mt-5 pe-2 ps-2 pe-md-1 ps-md-1">
+            return program.hide ? null :
+                <tr key={indx}>
+                    <td>{program.id}</td>
+                    <td><a href={program.rpdUrl} target="_blank">{program.name}</a></td>
+                    <td>
+                        {program.changes_sheet ? <a className="btn btn-sm btn-tspu text-white" target="_blank"
+                                                    href={program.changes_sheet}><i
+                            className="fas fa-link"></i></a> : null}
+                    </td>
+                </tr>;
+        });
 
-            <div className="students-docs">
-                <div className="h3 mt-5 pt-5 mb-3">
-                    Рабочие программы учебных дисциплин, практик
-                </div>
+        const template = rows.length === 0 ?
+            <Loader/> :
+            <table className="table">
+                <thead>
+                <tr>
+                    <th>Код</th>
+                    <th>Дисциплина/практика (с приложением ОММ/ФОС)</th>
+                    <th>Лист изменений</th>
+                </tr>
+                </thead>
+                <tbody>{rows}</tbody>
+            </table>;
 
-                <table className="table ">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th><input onChange={e => this.search(e.target.value)}
-                                type="text"
-                                placeholder="Поиск..." ></input></th>
-
-                        </tr>
-                        <tr>
-                            <th>Код</th>
-                            <th>Дисциплина/практика (с приложением ОММ/ФОС)</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>{rows}</tbody></table></div></div>
+        return <div className="students-docs">
+            <h3 className={'mb-3'}>
+                Рабочие программы учебных дисциплин, практик
+            </h3>
+            <div className={'mb-3'}>
+                <input autoFocus className={'form-control'} onChange={this.search} type="text"
+                       placeholder="Дисциплина/практика"/>
+            </div>
+            {template}
+        </div>
     }
-
 }
 
-
-export default ProgramsPage;
+export default withParams(ProgramsPage);

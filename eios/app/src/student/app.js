@@ -1,16 +1,10 @@
-import * as React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {useRoutes} from '../../../routes';
-import {BrowserRouter as Router} from 'react-router-dom';
-import { createRoot } from 'react-dom/client';
+import {useRoutes} from '../../routes';
+import {BrowserRouter as Router, Link, Routes} from 'react-router-dom';
 
-
-
+import ReactDOM from "react-dom";
 
 const StudentApp = () => {
     return <Router>{useRoutes()}</Router>;
 }
 
-const root = createRoot(document.getElementById('root'));
-
-root.render(<StudentApp/>);
+ReactDOM.render(<StudentApp/>, document.getElementById('root'));
