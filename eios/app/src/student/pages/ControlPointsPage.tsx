@@ -2,6 +2,7 @@ import React from 'react';
 
 import {ControlPointsEios} from '../../../api/eios/student/ControlPointsEios';
 import {withParams} from "../../helpers";
+import {Loader} from "../../../components/loader";
 
 class ControlPointsPage extends React.Component {
     state = {
@@ -70,16 +71,16 @@ class ControlPointsPage extends React.Component {
 
         switch (value) {
             case 'excellent':
-                this.pointFilter('отлично')
+                this.pointFilter('отлично');
                 break;
             case 'good':
-                this.pointFilter('хорошо')
+                this.pointFilter('хорошо');
                 break;
             case 'well':
-                this.pointFilter('удовлетворительно')
+                this.pointFilter('удовлетворительно');
                 break;
             case 'fail':
-                this.pointFilter('неудовлетворительно')
+                this.pointFilter('неудовлетворительно');
                 break;
             default:
                 this.resetFilter();
@@ -123,28 +124,12 @@ class ControlPointsPage extends React.Component {
         }));
     }
 
-
     render() {
-        const rows = this.state.controlPoints.map((point, indx) => {
-            const mark = point.mark_name !== "" ? point.mark_name : 'не выбрано';
-            return point.hide ? null :
-                <tr key={indx}>
-                    <td>{point.name_dis}</td>
-                    <td>{point.n_sem}</td>
-                    <td>{mark}</td>
-                </tr>;
-        });
+        const {controlPoints} = this.state;
 
         return <div className="students-kt">
-            <h3 className="">
-                Ход образовательного процесса
-            </h3>
-            <h5 className="mb-3">
-                Текущий контроль успеваемости обучающегося (результаты контрольных точек)
-            </h5>
-            <div className={'mb-3'}>
-                <a className="btn btn-sm btn-tspu mb-4" href="/students/kt/file_export">
-                    Скачать данные в Excel-файл</a>
+            <div className="mb-3">
+                <HeaderComponent/>
             </div>
 
             <div className={'mb-3'}>
@@ -154,17 +139,66 @@ class ControlPointsPage extends React.Component {
                     onPointFilter={this.handlePointFilter}/>
             </div>
 
-            <table className="table">
-                <thead>
-                <tr>
-                    <th>Дисциплина</th>
-                    <th>Семестр</th>
-                    <th>Результат</th>
-                </tr>
-                </thead>
-                <tbody>{rows}</tbody>
-            </table>
+            <div className={'mb-3'}>
+                {controlPoints.length ? <TableComponent elements={this.state.controlPoints}/> : <Loader/>}
+            </div>
         </div>;
+    }
+}
+
+
+interface ControlPointInteface {
+    name_dis: string
+    n_sem: number
+    mark_name: string
+    hide?: boolean;
+}
+
+interface TableProps {
+    elements: ControlPointInteface[]
+}
+
+class TableComponent extends React.Component<TableProps> {
+    render() {
+        const {elements} = this.props;
+
+        const rows = elements.map((point, indx) => {
+            const mark = point.mark_name !== "" ? point.mark_name : 'не выбрано';
+            return point.hide ? null :
+                <tr key={indx}>
+                    <td>{point.name_dis}</td>
+                    <td>{point.n_sem}</td>
+                    <td>{mark}</td>
+                </tr>;
+        });
+
+        return <table className="table">
+            <thead>
+            <tr>
+                <th>Дисциплина</th>
+                <th>Семестр</th>
+                <th>Результат</th>
+            </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+        </table>;
+    }
+}
+
+class HeaderComponent extends React.Component {
+    render() {
+        return <>
+            <h3 className="">
+                Ход образовательного процесса
+            </h3>
+            <h5 className="mb-3">
+                Текущий контроль успеваемости обучающегося (результаты контрольных точек)
+            </h5>
+            <div>
+                <a className="btn btn-sm btn-tspu mb-4" href="/students/kt/file_export">
+                    Скачать данные в Excel-файл</a>
+            </div>
+        </>
     }
 }
 
@@ -180,7 +214,8 @@ class FilterComponent extends React.Component<FilterInterface> {
 
         return <div className={'row'}>
             <div className="col-6">
-                <input autoFocus onChange={onSearch} className={'form-control'} value={app_state.filter.text} type="text"
+                <input autoFocus onChange={onSearch} className={'form-control'} value={app_state.filter.text}
+                       type="text"
                        placeholder="Дисциплина"/>
             </div>
             <div className="col-6">
