@@ -7,6 +7,8 @@ import MarksPage from "./pages/MarksPage";
 import CompetencePage from "./pages/CompetencePage";
 import LibPage from "./pages/LibPage";
 import PlanPage from "./pages/PlanPage";
+import PortfolioPage from "./pages/PortfolioPage"
+
 
 export const routers = {
     path: "/students",
@@ -37,7 +39,13 @@ export const routers = {
             path: "/marks",
             name: "Результаты промежуточной аттестации",
             Component: MarksPage
-        }, /*{
+        }, {
+            path: "/portfolio",
+            name: "Электроенное портфолио обучающегося",
+            Component: PortfolioPage
+        }
+        
+        /*{
             path: "/competence",
             name: "Результаты освоения программы",
             Component: CompetencePage

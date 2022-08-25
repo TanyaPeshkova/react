@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { StudentEios } from "../../../models/student/StudentEios";
 import { ProfileEios } from "../../../api/eios/student/ProfileEios";
 import { withParams } from "../../helpers";
+import { Loader } from "../../../comonents/loader";
+
 
 
 class ProfilePage extends React.Component {
@@ -22,11 +23,45 @@ class ProfilePage extends React.Component {
     }
 
     render() {
-        const student_id = this.state.profile.map((person, indx) => {
+        const { profile } = this.state;
+        const template = profile.length === 0 ? <Loader /> :
+            <TableComponent elements={this.state.profile} />
+
+        return <div className="student-profile person-profile">
+            <div className="row">
+                <div className="col mt-5">
+                    <HeaderComponent elements={profile} />
+                </div>
+            </div>
+            <div className='row'>
+                <div className='col-12'>
+                    {template}
+                </div>
+            </div>
+        </div>;
+    }
+
+}
+
+interface TableProps {
+    elements: StudentEios[]
+}
+
+class HeaderComponent extends React.Component<TableProps> {
+    render() {
+        const { elements } = this.props
+        const student_id = elements.map((person, indx) => {
             return <h3 className="mb-5 mt-5" data-id={person.id} key={indx + 1}>Профиль обучающегося</h3>
         })
+        return <> {student_id}
+        </>
+    }
+}
 
-        const rows = this.state.profile.map((person, indx) => {
+class TableComponent extends React.Component<TableProps> {
+    render() {
+        const { elements } = this.props
+        const rows = elements.map((person, indx) => {
             return <tbody key={indx}>
                 <tr>
                     <td>Фамилия, имя, отчество (при наличии)</td>
@@ -76,21 +111,9 @@ class ProfilePage extends React.Component {
                     </a></td>
                 </tr>
             </tbody>;
-        })
-        return <div className="student-profile person-profile">
-            <div className="row">
-                <div className="col mt-5">
-                    {student_id}
-                </div>
-            </div>
-            <div className='row'>
-                <div className='col-12'>
-                    <table className="table person-info-list">{rows}</table>
-                </div>
-            </div>
-        </div>;
+        });
+        return <table className="table person-info-list">{rows}</table>
     }
-
 }
 
 

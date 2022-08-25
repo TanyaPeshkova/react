@@ -12,7 +12,8 @@ module.exports = {
         marks: './app/src/student/app.js',
         competence: './app/src/student/app.js',
         lib: './app/src/student/app.js',
-        plan: './app/src/student/app.js'
+        plan: './app/src/student/app.js',
+        portfolio: './app/src/student/app.js',
 
     },
     output: {

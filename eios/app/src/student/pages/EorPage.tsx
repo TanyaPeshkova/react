@@ -2,7 +2,7 @@ import React from 'react';
 
 import { EorEios } from '../../../api/eios/student/EorEios';
 import { withParams } from "../../helpers";
-import { Loader } from "../../../components/loader";
+import { Loader } from "../../../comonents/loader";
 
 class EorPage extends React.Component {
     state = {
@@ -46,7 +46,59 @@ class EorPage extends React.Component {
     }
 
     render() {
-        const rows = this.state.eor.map((item, indx) => {
+
+        const { eor } = this.state;
+
+        const template = eor.length === 0 ? <Loader /> :
+            <TableComponent elements={this.state.eor} />
+
+        return <div className="students-eor">
+            <HeaderComponent onSearch={this.search} />
+            {template}
+        </div>;
+    }
+}
+
+interface HeaderInterface {
+    onSearch;
+}
+
+class HeaderComponent extends React.Component<HeaderInterface> {
+    render() {
+        const { onSearch } = this.props
+        return <>
+            < h3 className="mb-3">
+                Электронные образовательные ресурсы, указанные в рабочих программах
+            </h3>
+            <div className={'mb-3'}>
+                <input autoFocus
+                    onChange={onSearch}
+                    type="text"
+                    className={'form-control'}
+                    placeholder="Название" />
+            </div>
+        </>
+    }
+}
+
+interface EorInterface {
+    code: number;
+    curriculum: string;
+    name: string;
+    link: string;
+    id: number;
+    plan: string;
+    hide?: boolean;
+}
+
+interface TableProps {
+    elements: EorInterface[]
+}
+
+class TableComponent extends React.Component<TableProps>{
+    render() {
+        const { elements } = this.props;
+        const rows = elements.map((item, indx) => {
             return item.hide ? null : <tr key={indx}>
                 <td>
                     {item.name}
@@ -57,38 +109,23 @@ class EorPage extends React.Component {
                 </td>
             </tr>;
         });
+        return <table className="table">
+            <thead>
+                <tr>
+                    <th>
+                    </th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>Название</th>
+                    <th>Ссылка</th>
+                </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+        </table>
 
-        const template = rows.length === 0 ? <Loader /> :
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>
-                        </th>
-                        <th></th>
-                    </tr>
-                    <tr>
-                        <th>Название</th>
-                        <th>Ссылка</th>
-                    </tr>
-                </thead>
-                <tbody>{rows}</tbody>
-            </table>;
-
-        return <div className="students-eor">
-            <h3 className="mb-3">
-                Электронные образовательные ресурсы, указанные в рабочих программах
-            </h3>
-            <div className={'mb-3'}>
-                <input autoFocus
-                    onChange={this.search}
-                    type="text"
-                    className={'form-control'}
-                    placeholder="Название" />
-            </div>
-            {template}
-        </div>;
     }
 }
 
 
-export default withParams(EorPage); s
+export default withParams(EorPage); 

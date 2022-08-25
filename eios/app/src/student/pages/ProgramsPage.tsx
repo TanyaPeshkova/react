@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProgramsEios } from "../../../api/eios/student/ProgramsEios";
 import { withParams } from "../../helpers";
-import { Loader } from "../../../components/loader";
+import { Loader } from "../../../comonents/loader";
 
 class ProgramsPage extends React.Component {
     state = {
@@ -47,7 +47,57 @@ class ProgramsPage extends React.Component {
     }
 
     render() {
-        const rows = this.state.programs.map((program, indx) => {
+        const { programs } = this.state;
+
+        const template = programs.length === 0 ?
+            <Loader /> :
+            <TableComponent elements={this.state.programs} />
+
+        return <div className="students-docs">
+            <HeaderComponent onSearch={this.search} />
+            {template}
+        </div>
+    }
+}
+
+interface HeaderInterface {
+    onSearch;
+}
+
+class HeaderComponent extends React.Component<HeaderInterface> {
+    render() {
+        const { onSearch } = this.props
+        return <>
+            <h3 className={'mb-3'}>
+                Рабочие программы учебных дисциплин, практик
+            </h3>
+            <div className={'mb-3'}>
+                <input autoFocus className={'form-control'} onChange={onSearch} type="text"
+                    placeholder="Дисциплина/практика" />
+            </div>
+        </>
+    }
+}
+
+interface ProgramsInterface {
+    rpdId: number;
+    rpdUrl: string;
+    lineid: number;
+    id: string;
+    name: string;
+    komps: string;
+    changes_sheet: string;
+    hide: boolean;
+}
+
+interface TableProps {
+    elements: ProgramsInterface[];
+}
+
+class TableComponent extends React.Component<TableProps> {
+    render() {
+        const { elements } = this.props
+        const rows = elements.map((program, indx) => {
             return program.hide ? null :
                 <tr key={indx}>
                     <td>{program.id}</td>
@@ -59,30 +109,16 @@ class ProgramsPage extends React.Component {
                     </td>
                 </tr>;
         });
-
-        const template = rows.length === 0 ?
-            <Loader /> :
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th>Код</th>
-                        <th>Дисциплина/практика (с приложением ОММ/ФОС)</th>
-                        <th>Лист изменений</th>
-                    </tr>
-                </thead>
-                <tbody>{rows}</tbody>
-            </table>;
-
-        return <div className="students-docs">
-            <h3 className={'mb-3'}>
-                Рабочие программы учебных дисциплин, практик
-            </h3>
-            <div className={'mb-3'}>
-                <input autoFocus className={'form-control'} onChange={this.search} type="text"
-                    placeholder="Дисциплина/практика" />
-            </div>
-            {template}
-        </div>
+        return <table className="table">
+            <thead>
+                <tr>
+                    <th>Код</th>
+                    <th>Дисциплина/практика (с приложением ОММ/ФОС)</th>
+                    <th>Лист изменений</th>
+                </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+        </table>;
     }
 }
 

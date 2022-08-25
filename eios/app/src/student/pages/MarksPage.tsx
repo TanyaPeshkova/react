@@ -1,6 +1,8 @@
 import React from 'react';
 import { MarksEios } from '../../../api/eios/student/MarksEios';
 import { withParams } from "../../helpers";
+import { Loader } from "../../../comonents/loader";
+
 
 
 class MarksPage extends React.Component {
@@ -161,7 +163,57 @@ class MarksPage extends React.Component {
   }
 
   render() {
-    const rows = this.state.marks.map((mark, indx) => {
+    const { marks } = this.state;
+    const template = marks.length === 0 ? <Loader /> :
+      <TableComponent elements={this.state.marks} />
+
+    return <div className="students-marks">
+      <HeaderComponent />
+      <div className={'mb-3'}>
+        <FilterComponent
+          app_state={this.state}
+          onSearch={this.search}
+          onPointFilter={this.handlePointFilter}
+          onExamFilter={this.handleExamFilter} />
+      </div>
+      {template}
+    </div>;
+  }
+}
+
+class HeaderComponent extends React.Component {
+  render() {
+    return <>
+      <h3 className="mb-3">
+        Результаты промежуточной аттестации
+      </h3>
+      <h5 className="mb-3">
+        Оценки по результатам сессий
+      </h5>
+      <div className={'mb-3'}>
+        <a className="btn btn-sm btn-tspu " href="/students/marks/file_export/">
+          Скачать данные в Excel-файл</a>
+      </div>
+    </>
+  }
+}
+
+interface MarksInterface {
+  discipline_name: string;
+  mark_name: string;
+  is_examen: number;
+  number_of_semester: number;
+  hide?: boolean;
+}
+
+interface TableProps {
+  elements: MarksInterface[]
+}
+
+class TableComponent extends React.Component<TableProps> {
+  render() {
+    const { elements } = this.props
+    const rows = elements.map((mark, indx) => {
       const exam = mark.is_examen === 1 ? ' ✓' : null;
       const zachet = mark.is_examen !== 1 ? ' ✓' : null;
 
@@ -173,40 +225,21 @@ class MarksPage extends React.Component {
         <td align="center">{mark.number_of_semester}</td>
       </tr>
     });
-
-    return <div className="students-marks">
-      <h3 className="mb-3">
-        Результаты промежуточной аттестации
-      </h3>
-      <h5 className="mb-3">
-        Оценки по результатам сессий
-      </h5>
-      <div className={'mb-3'}>
-        <a className="btn btn-sm btn-tspu " href="/students/marks/file_export/">
-          Скачать данные в Excel-файл</a>
-      </div>
-      <div className={'mb-3'}>
-        <FilterComponent
-          app_state={this.state}
-          onSearch={this.search}
-          onPointFilter={this.handlePointFilter}
-          onExamFilter={this.handleExamFilter} />
-      </div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Дисциплина</th>
-            <th>Оценка</th>
-            <th>Зачет</th>
-            <th>Экзамен</th>
-            <th>Семестр</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </table>
-    </div>;
+    return <table className="table">
+      <thead>
+        <tr>
+          <th>Дисциплина</th>
+          <th>Оценка</th>
+          <th>Зачет</th>
+          <th>Экзамен</th>
+          <th>Семестр</th>
+        </tr>
+      </thead>
+      <tbody>{rows}</tbody>
+    </table>
   }
 }
+
 
 interface FilterInterface {
   onSearch;

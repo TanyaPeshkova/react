@@ -1,4 +1,4 @@
-import {useRoutes} from '../../routes';
+import {useRoutes} from '../../../routes';
 import {BrowserRouter as Router, Link, Routes} from 'react-router-dom';
 
 import ReactDOM from "react-dom";

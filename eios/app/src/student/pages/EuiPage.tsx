@@ -3,7 +3,7 @@ import React from 'react';
 import { Eui } from "../../../models/student/Eui";
 import { EuiEios } from '../../../api/eios/student/EuiEios';
 import { withParams } from "../../helpers";
-import { Loader } from "../../../components/loader";
+import { Loader } from "../../../comonents/loader";
 
 class EuiPage extends React.Component {
     state = {
@@ -49,7 +49,53 @@ class EuiPage extends React.Component {
     }
 
     render() {
-        const rows = this.state.eui.map((item, indx) => {
+
+        const { eui } = this.state;
+
+        const template = eui.length === 0 ? <Loader /> :
+            <TableComponent elements={this.state.eui} />
+        return <div className="students-eor">
+            <HeaderComponent onSearch={this.search} />
+            {template}
+        </div>;
+    }
+}
+
+interface HeaderInterface {
+    onSearch;
+}
+
+class HeaderComponent extends React.Component<HeaderInterface> {
+    render() {
+        const { onSearch } = this.props
+        return <>
+            <h3 className={'mb-3'}>
+                Электронные учебные издания, указанные в рабочих программах
+            </h3>
+            <div className={'mb-3'}>
+                <input autoFocus onChange={onSearch} type="text" className={'form-control'} placeholder="Название" />
+            </div>
+        </>
+    }
+}
+
+interface EuiInterface {
+    authors: number;
+    publishing: string;
+    name: string;
+    link: string;
+    id: number;
+    hide?: boolean;
+}
+
+interface TableProps {
+    elements: EuiInterface[]
+}
+
+class TableComponent extends React.Component<TableProps>{
+    render() {
+        const { elements } = this.props;
+        const rows = elements.map((item, indx) => {
             return item.hide ? null : <tr key={indx}>
                 <td>{item.name} <strong>{item.authors}</strong></td>
                 <td>
@@ -58,8 +104,7 @@ class EuiPage extends React.Component {
                 </td>
             </tr>
         });
-
-        const template = rows.length === 0 ? <Loader /> : <table className="table">
+        return <table className="table">
             <thead>
                 <tr>
                     <th>Название</th>
@@ -69,15 +114,6 @@ class EuiPage extends React.Component {
             <tbody>{rows}</tbody>
         </table>;
 
-        return <div className="students-eor">
-            <h3 className={'mb-3'}>
-                Электронные учебные издания, указанные в рабочих программах
-            </h3>
-            <div className={'mb-3'}>
-                <input autoFocus onChange={this.search} type="text" className={'form-control'} placeholder="Название" />
-            </div>
-            {template}
-        </div>;
     }
 }
 
